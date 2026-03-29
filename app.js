@@ -1,6 +1,6 @@
 // ============================================================
 //  TEMPURA POTATO — app.js
-//  Firebase + Cart + Menu + PWA + Animations
+//  Firebase + Cart + Menu + PWA + Animations + Rebranding + Gallery
 // ============================================================
 
 // ─── FIREBASE CONFIG ───────────────────────────────────────
@@ -15,7 +15,6 @@ const firebaseConfig = {
   measurementId: "G-9FW6P8L7VP"
 };
 
-// Init Firebase (compat version loaded via script tags)
 let db, auth;
 try {
   firebase.initializeApp(firebaseConfig);
@@ -25,13 +24,10 @@ try {
 
 // ─── MENU DATA ─────────────────────────────────────────────
 const menuData = [
-  // BURGERS
   { id:'b1', name:'Grill Burger', cat:'burgers', price:320, emoji:'🍔', desc:'Flame-grilled patty with fresh veggies & signature sauce' },
   { id:'b2', name:'Zinger Burger', cat:'burgers', price:350, emoji:'🍔', desc:'Crispy zinger patty, crunchy lettuce, special zinger sauce' },
   { id:'b3', name:'Zinger Twister', cat:'burgers', price:380, emoji:'🌯', desc:'Crispy zinger in a soft tortilla wrap with fresh veggies' },
   { id:'b4', name:'Chicken BBQ Wrap', cat:'wraps', price:300, emoji:'🌯', desc:'Juicy BBQ chicken strips wrapped in warm paratha' },
-
-  // WRAPS & ROLLS
   { id:'w1', name:'Chicken Bhayari Paratha Roll', cat:'wraps', price:300, emoji:'🫔', desc:'Classic chicken bhayari in soft flaky paratha' },
   { id:'w2', name:'Seekh Kabab Paratha Roll', cat:'wraps', price:250, emoji:'🫔', desc:'Juicy seekh kababs rolled in fresh paratha' },
   { id:'w3', name:'Mala Boti Wrap', cat:'wraps', price:450, emoji:'🌯', desc:'Spicy mala boti with crispy fries inside a wrap' },
@@ -42,49 +38,23 @@ const menuData = [
   { id:'w8', name:'Grill Shawarma', cat:'wraps', price:280, emoji:'🌯', desc:'Fresh grilled chicken shawarma with garlic sauce' },
   { id:'w9', name:'Special Grilled Shawarma', cat:'wraps', price:380, emoji:'🌯', desc:'Upgraded shawarma — extra toppings, extra flavour' },
   { id:'w10', name:'2 Shawarma', cat:'wraps', price:380, emoji:'🌯', desc:'Two classic shawarmas — great value' },
-
-  // CHICKEN
   { id:'c1', name:'Chicken Taka Paratha Roll', cat:'wraps', price:280, emoji:'🫔', desc:'Taka-style spiced chicken in crispy paratha' },
   { id:'c2', name:'Chicken Paratha Roll', cat:'wraps', price:290, emoji:'🫔', desc:'Tender chicken strips in warm fresh paratha' },
   { id:'c3', name:'Taka Grilled Chicken', cat:'sides', price:250, emoji:'🍗', desc:'Perfectly grilled chicken taka style — 330g' },
   { id:'c4', name:'Half Chicken Zinger Sharma', cat:'wraps', price:550, emoji:'🌯', desc:'Half chicken zinger shawarma — massive flavour' },
-
-  // SIDES
   { id:'s1', name:'Plane Fries', cat:'sides', price:120, emoji:'🍟', desc:'Classic golden crispy fries' },
   { id:'s2', name:'Loaded Fries', cat:'sides', price:180, emoji:'🍟', desc:'Fries loaded with cheese sauce & toppings' },
   { id:'s3', name:'1 Litre Next Cola', cat:'sides', price:120, emoji:'🥤', desc:'Chilled Next Cola 1 litre' },
-
-  // DEALS
-  { id:'d1', name:'Deal 1', cat:'deals', price:600, emoji:'🎁',
-    desc:'2 Zinger Burgers + 2 Next Colas',
-    includes:['2 Zinger Burgers','2 Next Colas'] },
-  { id:'d2', name:'Deal 2', cat:'deals', price:420, emoji:'🎁',
-    desc:'2 Zinger Twisters + 1 Plane Fries',
-    includes:['2 Zinger Twisters','1 Plane Fries'] },
-  { id:'d3', name:'Deal 3', cat:'deals', price:380, emoji:'🎁',
-    desc:'1 Zinger Burger + 1 Plane Fries + 1 Red Drink',
-    includes:['1 Zinger Burger','1 Plane Fries','1 Red Drink'] },
-  { id:'d4', name:'Deal 4', cat:'deals', price:480, emoji:'🎁',
-    desc:'2 Patty Burger + 1 Litre Next Cola',
-    includes:['2 Patty Burgers','1 Litre Next Cola'] },
-  { id:'d5', name:'Deal 5', cat:'deals', price:550, emoji:'🎁',
-    desc:'1 Zinger Burger + 1 Chicken Sharma + 1 Half Drink',
-    includes:['1 Zinger Burger','1 Chicken Shawarma','1 Half Drink'] },
-  { id:'d6', name:'Deal 6 — Family', cat:'deals', price:1000, emoji:'🎉',
-    desc:'2 Patty Burgers + 2 Zingers + 1 Litre Cola + 1 Loaded Fries',
-    includes:['2 Patty Burgers','2 Zinger Burgers','1 Litre Next Cola','1 Loaded Fries'] },
-  { id:'d7', name:'Deal 7 — Mega', cat:'deals', price:1250, emoji:'🎉',
-    desc:'4 Zingers + 1 Litre Cola + 1 Loaded Fries',
-    includes:['4 Zinger Burgers','1 Litre Next Cola','1 Loaded Fries'] },
-  { id:'d8', name:'Deal 8 — Feast', cat:'deals', price:1480, emoji:'🎉',
-    desc:'5 Grill Burgers + 2 Loaded Fries + 1 Litre Cola',
-    includes:['5 Grill Burgers','2 Loaded Fries','1 Litre Next Cola'] },
-  { id:'d9', name:'Deal 9 — Party', cat:'deals', price:1500, emoji:'🎊',
-    desc:'6 Patty Burgers + 1 Litre Cola + 1 Next Cola + 1 Loaded Fries',
-    includes:['6 Patty Burgers','1 Litre Next Cola','1 Loaded Fries'] },
-  { id:'d10', name:'Deal 10 — Legendary', cat:'deals', price:2000, emoji:'👑',
-    desc:'Ultimate party pack — everything you need for a group',
-    includes:['2 Patty Burgers','2 Zingers','2 Grill Burgers','2 Loaded Fries','2 Litres Cola'] },
+  { id:'d1', name:'Deal 1', cat:'deals', price:600, emoji:'🎁', desc:'2 Zinger Burgers + 2 Next Colas', includes:['2 Zinger Burgers','2 Next Colas'] },
+  { id:'d2', name:'Deal 2', cat:'deals', price:420, emoji:'🎁', desc:'2 Zinger Twisters + 1 Plane Fries', includes:['2 Zinger Twisters','1 Plane Fries'] },
+  { id:'d3', name:'Deal 3', cat:'deals', price:380, emoji:'🎁', desc:'1 Zinger Burger + 1 Plane Fries + 1 Red Drink', includes:['1 Zinger Burger','1 Plane Fries','1 Red Drink'] },
+  { id:'d4', name:'Deal 4', cat:'deals', price:480, emoji:'🎁', desc:'2 Patty Burger + 1 Litre Next Cola', includes:['2 Patty Burgers','1 Litre Next Cola'] },
+  { id:'d5', name:'Deal 5', cat:'deals', price:550, emoji:'🎁', desc:'1 Zinger Burger + 1 Chicken Sharma + 1 Half Drink', includes:['1 Zinger Burger','1 Chicken Shawarma','1 Half Drink'] },
+  { id:'d6', name:'Deal 6 — Family', cat:'deals', price:1000, emoji:'🎉', desc:'2 Patty Burgers + 2 Zingers + 1 Litre Cola + 1 Loaded Fries', includes:['2 Patty Burgers','2 Zinger Burgers','1 Litre Next Cola','1 Loaded Fries'] },
+  { id:'d7', name:'Deal 7 — Mega', cat:'deals', price:1250, emoji:'🎉', desc:'4 Zingers + 1 Litre Cola + 1 Loaded Fries', includes:['4 Zinger Burgers','1 Litre Next Cola','1 Loaded Fries'] },
+  { id:'d8', name:'Deal 8 — Feast', cat:'deals', price:1480, emoji:'🎉', desc:'5 Grill Burgers + 2 Loaded Fries + 1 Litre Cola', includes:['5 Grill Burgers','2 Loaded Fries','1 Litre Next Cola'] },
+  { id:'d9', name:'Deal 9 — Party', cat:'deals', price:1500, emoji:'🎊', desc:'6 Patty Burgers + 1 Litre Cola + 1 Next Cola + 1 Loaded Fries', includes:['6 Patty Burgers','1 Litre Next Cola','1 Loaded Fries'] },
+  { id:'d10', name:'Deal 10 — Legendary', cat:'deals', price:2000, emoji:'👑', desc:'Ultimate party pack — everything you need for a group', includes:['2 Patty Burgers','2 Zingers','2 Grill Burgers','2 Loaded Fries','2 Litres Cola'] },
 ];
 
 // ─── CART ──────────────────────────────────────────────────
@@ -115,7 +85,6 @@ function updateCartUI() {
   }
 }
 
-// ─── TOAST ─────────────────────────────────────────────────
 function showToast(msg) {
   let t = document.querySelector('.toast');
   if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
@@ -125,7 +94,6 @@ function showToast(msg) {
   t._timer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
-// ─── ITEM MODAL ────────────────────────────────────────────
 function openItemModal(item) {
   modalItem = item;
   modalQty = 1;
@@ -152,7 +120,6 @@ function addModalToCart() {
   if (modalItem) { addToCart(modalItem, modalQty); closeItemModal(); }
 }
 
-// ─── RENDER MENU ───────────────────────────────────────────
 function renderMenu(cat = 'all') {
   const grid = document.getElementById('menu-grid');
   if (!grid) return;
@@ -194,7 +161,6 @@ function renderDeals() {
   triggerRevealAnimations();
 }
 
-// ─── MENU TABS ─────────────────────────────────────────────
 function initMenuTabs() {
   const tabs = document.querySelectorAll('.menu-tab');
   tabs.forEach(tab => {
@@ -206,7 +172,6 @@ function initMenuTabs() {
   });
 }
 
-// ─── NAVBAR ────────────────────────────────────────────────
 function initNavbar() {
   const nav = document.getElementById('navbar');
   const hamburger = document.getElementById('nav-hamburger');
@@ -214,7 +179,6 @@ function initNavbar() {
   if (!nav) return;
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
-    // shift navbar down if pwa banner showing
     if (document.getElementById('pwa-banner')?.classList.contains('show')) {
       nav.style.top = '48px';
     }
@@ -228,7 +192,6 @@ window.closeMobileMenu = function() {
   document.getElementById('mobile-menu')?.classList.remove('open');
 };
 
-// ─── PARTICLES ─────────────────────────────────────────────
 function initParticles() {
   const container = document.getElementById('hero-particles');
   if (!container) return;
@@ -243,7 +206,6 @@ function initParticles() {
   }
 }
 
-// ─── PARALLAX ──────────────────────────────────────────────
 function initParallax() {
   const bg = document.getElementById('parallax-bg');
   if (!bg) return;
@@ -256,55 +218,6 @@ function initParallax() {
   });
 }
 
-// ─── APPLE SCROLL EFFECT ───────────────────────────────────
-function initAppleScroll() {
-  const section = document.getElementById('apple-section');
-  if (!section) return;
-  const textBlocks = [
-    document.getElementById('apple-text-1'),
-    document.getElementById('apple-text-2'),
-    document.getElementById('apple-text-3'),
-    document.getElementById('apple-text-4'),
-    document.getElementById('apple-text-5'),
-  ].filter(Boolean);
-  const burger = document.getElementById('ab-burger');
-  const layers = {
-    bunTop: document.getElementById('ab-bun-top'),
-    lettuce: document.getElementById('ab-lettuce'),
-    cheese: document.getElementById('ab-cheese'),
-    patty: document.getElementById('ab-patty'),
-    tomato: document.getElementById('ab-tomato'),
-    bunBottom: document.getElementById('ab-bun-bottom'),
-  };
-
-  function onScroll() {
-    const rect = section.getBoundingClientRect();
-    const sectionH = section.offsetHeight;
-    const scrolled = -rect.top;
-    const progress = Math.max(0, Math.min(1, scrolled / (sectionH - window.innerHeight)));
-    const step = Math.floor(progress * 5);
-
-    textBlocks.forEach((el, i) => {
-      el.classList.toggle('visible', i === step);
-    });
-
-    // Burger layer explosion based on progress
-    if (burger) {
-      const explode = progress > 0.1;
-      const gap = Math.min(progress * 60, 40);
-      if (layers.bunTop) layers.bunTop.style.transform = explode ? `translateY(-${gap * 2.5}px)` : '';
-      if (layers.lettuce) layers.lettuce.style.transform = explode ? `translateY(-${gap * 1.5}px)` : '';
-      if (layers.cheese) layers.cheese.style.transform = explode ? `translateY(-${gap * 0.8}px)` : '';
-      if (layers.tomato) layers.tomato.style.transform = explode ? `translateY(${gap * 0.8}px)` : '';
-      if (layers.bunBottom) layers.bunBottom.style.transform = explode ? `translateY(${gap * 2}px)` : '';
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}
-
-// ─── REVEAL ANIMATIONS ─────────────────────────────────────
 function triggerRevealAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -314,16 +227,12 @@ function triggerRevealAnimations() {
   document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
 }
 
-// ─── PWA ───────────────────────────────────────────────────
 let deferredPrompt = null;
-
 function initPWA() {
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Show banner after 3s
     setTimeout(() => document.getElementById('pwa-banner')?.classList.add('show'), 3000);
-    // Show popup after 8s (first visit)
     if (!localStorage.getItem('tp_pwa_shown')) {
       setTimeout(() => {
         document.getElementById('pwa-popup-overlay')?.classList.add('show');
@@ -346,7 +255,6 @@ function initPWA() {
         showToast('App installed! Enjoy 20% off 🎉');
       }
     } else {
-      // Show manual instructions
       const manual = document.getElementById('pwa-popup-manual');
       if (manual) manual.style.display = 'block';
       document.getElementById('pwa-popup-overlay')?.classList.add('show');
@@ -360,7 +268,6 @@ function initPWA() {
     document.getElementById('pwa-banner')?.classList.remove('show');
   });
 
-  // Register service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(err => console.warn('SW:', err));
   }
@@ -370,26 +277,104 @@ window.closePWAPopup = function() {
   document.getElementById('pwa-popup-overlay')?.classList.remove('show');
 };
 
-// ─── CLOSE MODALS ON OVERLAY CLICK ────────────────────────
-document.addEventListener('click', (e) => {
-  if (e.target.id === 'item-modal-overlay') closeItemModal();
-  if (e.target.id === 'pwa-popup-overlay') closePWAPopup();
-});
+// ─── NEW: LIVE REBRANDING & IMAGE LOADER ───────────────────
+function loadBrandingFromFirebase() {
+  if (!db) return;
+  db.ref('settings/branding').on('value', snap => {
+    const data = snap.val() || {};
+    if (data.accentColor) {
+      document.documentElement.style.setProperty('--yellow', data.accentColor);
+      document.documentElement.style.setProperty('--yellow-glow', data.accentColor + '4d');
+    }
+    if (data.name) document.querySelectorAll('.nav-brand, .footer-brand').forEach(el => el.textContent = data.name.toUpperCase());
+    if (data.tagline) document.querySelectorAll('.nav-sub, .footer-tagline').forEach(el => el.textContent = data.tagline);
+    if (data.phone) {
+      const phoneEl = document.getElementById('contact-phone');
+      if (phoneEl) phoneEl.innerText = data.phone;
+    }
+    if (data.address) {
+      const addrEl = document.getElementById('contact-address');
+      if (addrEl) addrEl.innerText = data.address;
+    }
+  });
+
+  db.ref('settings/content').on('value', snap => {
+    const data = snap.val() || {};
+    if (data.bannerText) {
+      const bannerSpan = document.querySelector('.pwa-banner span');
+      if (bannerSpan) bannerSpan.innerHTML = `🎉 ${data.bannerText}`;
+    }
+    if (data.heroHeadline) {
+      const parts = data.heroHeadline.split(' ');
+      const line1El = document.getElementById('hero-line1');
+      const line2El = document.getElementById('hero-line2');
+      if (line1El) line1El.innerText = parts[0] || 'TASTE THE';
+      if (line2El && parts[1]) line2El.innerText = parts.slice(1).join(' ') || 'OBSESSION';
+    }
+    if (data.heroSub) {
+      const subEl = document.getElementById('hero-sub-text');
+      if (subEl) subEl.innerHTML = data.heroSub;
+    }
+    if (data.heroBadge) {
+      const badgeEl = document.getElementById('hero-badge-text');
+      if (badgeEl) badgeEl.innerText = data.heroBadge;
+    }
+  });
+
+  db.ref('settings/images').on('value', snap => {
+    const imgs = snap.val() || {};
+    const heroImg = document.getElementById('hero-image');
+    if (heroImg && imgs.hero) heroImg.src = imgs.hero;
+    const gallery1 = document.querySelector('#gallery-img1 img');
+    if (gallery1 && imgs.gallery1) gallery1.src = imgs.gallery1;
+    const gallery2 = document.querySelector('#gallery-img2 img');
+    if (gallery2 && imgs.gallery2) gallery2.src = imgs.gallery2;
+    const gallery3 = document.querySelector('#gallery-img3 img');
+    if (gallery3 && imgs.gallery3) gallery3.src = imgs.gallery3;
+    const gallery4 = document.querySelector('#gallery-img4 img');
+    if (gallery4 && imgs.gallery4) gallery4.src = imgs.gallery4;
+    const comboImgs = document.querySelectorAll('.combo-card img');
+    if (comboImgs.length >= 1 && imgs.combo1) comboImgs[0].src = imgs.combo1;
+    if (comboImgs.length >= 2 && imgs.combo2) comboImgs[1].src = imgs.combo2;
+    if (comboImgs.length >= 3 && imgs.combo3) comboImgs[2].src = imgs.combo3;
+  });
+}
+
+function initScrollGallery() {
+  const items = document.querySelectorAll('.gallery-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  items.forEach(item => observer.observe(item));
+}
+
+function loadCombos() {
+  const container = document.getElementById('combos-grid');
+  if (!container) return;
+  container.innerHTML = `
+    <div class="combo-card"><img src="https://via.placeholder.com/400x200?text=Zinger+Combo" alt="Zinger Combo"><h3>Zinger Meal</h3><p>Zinger Burger + Fries + Cola</p><div class="combo-price">Rs. 550</div></div>
+    <div class="combo-card"><img src="https://via.placeholder.com/400x200?text=Shawarma+Combo" alt="Shawarma Combo"><h3>Shawarma Feast</h3><p>2 Shawarmas + Fries + Drink</p><div class="combo-price">Rs. 650</div></div>
+    <div class="combo-card"><img src="https://via.placeholder.com/400x200?text=Family+Combo" alt="Family Combo"><h3>Family Bucket</h3><p>4 Burgers + 2 Fries + 1.5L Cola</p><div class="combo-price">Rs. 1250</div></div>
+  `;
+}
 
 // ─── INIT ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initParticles();
   initParallax();
-  initAppleScroll();
   renderMenu('all');
   renderDeals();
   initMenuTabs();
   triggerRevealAnimations();
   initPWA();
   updateCartUI();
+  loadBrandingFromFirebase();
+  initScrollGallery();
+  loadCombos();
 
-  // Load dynamic settings from Firebase if available
   if (db) {
     db.ref('settings/branding').once('value').then(snap => {
       const data = snap.val();
@@ -401,5 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Export for other pages
+// Exports for other pages
 window.TP = { cart, addToCart, saveCart, menuData, showToast, db, auth };
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'item-modal-overlay') closeItemModal();
+  if (e.target.id === 'pwa-popup-overlay') closePWAPopup();
+});

@@ -53,17 +53,17 @@
   <a href="checkout.html" class="mobile-order-btn">Order Now</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO with real image -->
 <section class="hero" id="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-particles" id="hero-particles"></div>
   <div class="hero-content">
-    <div class="hero-badge">🔥 Lahore's Fastest Growing Restaurant</div>
+    <div class="hero-badge" id="hero-badge-text">🔥 Lahore's Fastest Growing Restaurant</div>
     <h1 class="hero-title">
-      <span class="hero-title-line1">TASTE THE</span>
-      <span class="hero-title-line2">OBSESSION</span>
+      <span class="hero-title-line1" id="hero-line1">TASTE THE</span>
+      <span class="hero-title-line2" id="hero-line2">OBSESSION</span>
     </h1>
-    <p class="hero-sub">Premium burgers. Legendary wraps. Deals that hit different.<br/>Main Bazar Nishat Colony, Milad Chock — Lahore</p>
+    <p class="hero-sub" id="hero-sub-text">Premium burgers. Legendary wraps. Deals that hit different.<br/>Main Bazar Nishat Colony, Milad Chock — Lahore</p>
     <div class="hero-cta-row">
       <a href="#menu" class="btn-primary">Explore Menu</a>
       <a href="checkout.html" class="btn-secondary">Order Now →</a>
@@ -77,36 +77,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="burger-scroll-wrapper" id="burger-scroll-wrapper">
-      <div class="burger-3d" id="burger-3d">
-        <div class="burger-layer layer-bun-top">
-          <div class="bun-top-shape"></div>
-          <div class="sesame s1"></div><div class="sesame s2"></div><div class="sesame s3"></div>
-          <div class="sesame s4"></div><div class="sesame s5"></div>
-        </div>
-        <div class="burger-layer layer-lettuce">
-          <div class="lettuce-shape"></div>
-        </div>
-        <div class="burger-layer layer-cheese">
-          <div class="cheese-shape"></div>
-        </div>
-        <div class="burger-layer layer-patty">
-          <div class="patty-shape"></div>
-        </div>
-        <div class="burger-layer layer-sauce">
-          <div class="sauce-drip d1"></div>
-          <div class="sauce-drip d2"></div>
-          <div class="sauce-drip d3"></div>
-        </div>
-        <div class="burger-layer layer-tomato">
-          <div class="tomato-shape"></div>
-        </div>
-        <div class="burger-layer layer-bun-bottom">
-          <div class="bun-bottom-shape"></div>
-        </div>
-      </div>
-      <div class="burger-glow"></div>
-    </div>
+    <img id="hero-image" src="https://via.placeholder.com/500x500?text=Burger" alt="Signature Burger" style="width:100%; max-width:450px; border-radius:30px; filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
   </div>
   <div class="hero-scroll-hint">
     <span>Scroll to explore</span>
@@ -114,97 +85,81 @@
   </div>
 </section>
 
-<!-- APPLE-STYLE BURGER REVEAL SECTION -->
-<section class="apple-section" id="apple-section">
-  <div class="apple-sticky-container">
-    <div class="apple-text-block" id="apple-text-1">
-      <h2>Every Layer.<br/>Crafted with <em>Obsession.</em></h2>
+<!-- SCROLL GALLERY (replaces apple burger effect) -->
+<section class="scroll-gallery" id="scroll-gallery">
+  <div class="section-header">
+    <div class="section-tag">VISUAL FEAST</div>
+    <h2 class="section-title">Our Signature <span style="color:var(--yellow)">Burgers & Wraps</span></h2>
+    <p class="section-sub">Real ingredients. Real flavour. Real photos.</p>
+  </div>
+  <div class="gallery-container">
+    <div class="gallery-item left" id="gallery-img1">
+      <img src="https://via.placeholder.com/400x300?text=Zinger+Burger" alt="Zinger Burger">
+      <div class="gallery-caption">Zinger Burger</div>
     </div>
-    <div class="apple-text-block" id="apple-text-2">
-      <h2>The Bun —<br/><em>Toasted to Perfection.</em></h2>
-      <p>Soft brioche-style buns, golden on the inside. Every single time.</p>
+    <div class="gallery-item right" id="gallery-img2">
+      <img src="https://via.placeholder.com/400x300?text=Shawarma" alt="Shawarma">
+      <div class="gallery-caption">Chicken Shawarma</div>
     </div>
-    <div class="apple-text-block" id="apple-text-3">
-      <h2>The Patty —<br/><em>100% Pure Chicken.</em></h2>
-      <p>Hand-pressed, seasoned deep, seared on high heat for that unmistakable crust.</p>
+    <div class="gallery-item left" id="gallery-img3">
+      <img src="https://via.placeholder.com/400x300?text=Grill+Burger" alt="Grill Burger">
+      <div class="gallery-caption">Grill Burger</div>
     </div>
-    <div class="apple-text-block" id="apple-text-4">
-      <h2>The Sauce —<br/><em>Our Secret Weapon.</em></h2>
-      <p>Blended in-house. Never bottled. Never boring.</p>
-    </div>
-    <div class="apple-text-block" id="apple-text-5">
-      <h2>The Result —<br/><em>Pure Jaw Drop.</em></h2>
-      <p>This is what Lahore has been waiting for.</p>
-    </div>
-    <div class="apple-burger-fixed" id="apple-burger-fixed">
-      <div class="ab-burger" id="ab-burger">
-        <div class="ab-layer ab-bun-top" id="ab-bun-top">
-          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="150" cy="60" rx="145" ry="55" fill="#c8813a"/>
-            <ellipse cx="150" cy="45" rx="140" ry="42" fill="#d4924a"/>
-            <ellipse cx="150" cy="35" rx="130" ry="32" fill="#e8a85a"/>
-            <circle cx="100" cy="30" r="6" fill="#f0bc6a" opacity="0.7"/>
-            <circle cx="150" cy="20" r="5" fill="#f0bc6a" opacity="0.7"/>
-            <circle cx="200" cy="28" r="7" fill="#f0bc6a" opacity="0.7"/>
-            <circle cx="120" cy="45" r="4" fill="#f0bc6a" opacity="0.5"/>
-            <circle cx="180" cy="40" r="5" fill="#f0bc6a" opacity="0.5"/>
-          </svg>
-        </div>
-        <div class="ab-layer ab-lettuce" id="ab-lettuce">
-          <svg viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5,20 Q20,5 40,20 Q60,35 80,18 Q100,5 120,22 Q140,35 160,18 Q180,5 200,22 Q220,35 240,18 Q260,5 280,20 Q295,30 295,20 L295,40 L5,40 Z" fill="#4a8c3f"/>
-            <path d="M5,20 Q20,5 40,20 Q60,35 80,18 Q100,5 120,22 Q140,35 160,18 Q180,5 200,22 Q220,35 240,18 Q260,5 280,20" fill="none" stroke="#5aaa4a" stroke-width="2"/>
-          </svg>
-        </div>
-        <div class="ab-layer ab-cheese" id="ab-cheese">
-          <svg viewBox="0 0 300 30" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="5" width="300" height="25" fill="#f5c842" rx="3"/>
-            <path d="M0,5 Q30,0 60,8 Q90,15 120,5 Q150,0 180,8 Q210,15 240,5 Q270,0 300,5" fill="#f7d060" stroke="none"/>
-            <path d="M40,30 Q45,40 50,30" fill="#f5c842" stroke="none"/>
-            <path d="M120,30 Q125,42 130,30" fill="#f5c842" stroke="none"/>
-            <path d="M210,30 Q215,38 220,30" fill="#f5c842" stroke="none"/>
-          </svg>
-        </div>
-        <div class="ab-layer ab-patty" id="ab-patty">
-          <svg viewBox="0 0 300 50" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="150" cy="25" rx="145" ry="22" fill="#3d1f0a"/>
-            <ellipse cx="150" cy="22" rx="140" ry="18" fill="#5a2d0c"/>
-            <ellipse cx="150" cy="20" rx="135" ry="15" fill="#6b3510"/>
-            <path d="M30,20 Q80,12 150,18 Q220,24 270,18" stroke="#7a4018" stroke-width="3" fill="none" opacity="0.6"/>
-            <path d="M40,26 Q100,20 160,26 Q220,30 260,24" stroke="#7a4018" stroke-width="2" fill="none" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="ab-layer ab-tomato" id="ab-tomato">
-          <svg viewBox="0 0 300 25" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="75" cy="13" rx="65" ry="11" fill="#e03030"/>
-            <ellipse cx="225" cy="13" rx="65" ry="11" fill="#e03030"/>
-            <ellipse cx="75" cy="11" rx="62" ry="9" fill="#f04040"/>
-            <ellipse cx="225" cy="11" rx="62" ry="9" fill="#f04040"/>
-            <line x1="75" y1="5" x2="75" y2="21" stroke="#ff6060" stroke-width="1.5" opacity="0.5"/>
-            <line x1="225" y1="5" x2="225" y2="21" stroke="#ff6060" stroke-width="1.5" opacity="0.5"/>
-          </svg>
-        </div>
-        <div class="ab-layer ab-bun-bottom" id="ab-bun-bottom">
-          <svg viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="150" cy="20" rx="145" ry="18" fill="#c8813a"/>
-            <ellipse cx="150" cy="22" rx="145" ry="20" fill="#b8712a"/>
-            <ellipse cx="150" cy="40" rx="145" ry="22" fill="#a86520"/>
-          </svg>
-        </div>
-      </div>
+    <div class="gallery-item right" id="gallery-img4">
+      <img src="https://via.placeholder.com/400x300?text=Mala+Boti+Wrap" alt="Mala Boti Wrap">
+      <div class="gallery-caption">Mala Boti Wrap</div>
     </div>
   </div>
 </section>
 
-<!-- PARALLAX BANNER -->
-<section class="parallax-banner" id="parallax-banner">
-  <div class="parallax-bg" id="parallax-bg"></div>
-  <div class="parallax-content">
-    <div class="pb-tag">CRAFTED IN LAHORE</div>
-    <h2 class="pb-title">Food That Hits<br/><span>Different.</span></h2>
-    <p class="pb-desc">We started with one mission: make food so good people can't shut up about it. Mission accomplished.</p>
-    <a href="checkout.html" class="btn-primary">Order Now</a>
+<!-- WHY CHOOSE US -->
+<section class="why-us">
+  <div class="section-header">
+    <div class="section-tag">WHY US?</div>
+    <h2 class="section-title">Lahore's <span style="color:var(--yellow)">#1 Choice</span></h2>
   </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">🔥</div><h3>Fresh Daily</h3><p>Never frozen. Always made from scratch.</p></div>
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>30 Min Delivery</h3><p>Fast, hot, and fresh to your doorstep.</p></div>
+    <div class="feature-card"><div class="feature-icon">💰</div><h3>Best Value</h3><p>Premium taste without breaking the bank.</p></div>
+    <div class="feature-card"><div class="feature-icon">📍</div><h3>Milad Chock</h3><p>Easy pickup & delivery across Lahore.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <div class="section-tag">LOVED BY LAHORE</div>
+    <h2 class="section-title">Customer <span style="color:var(--yellow)">Reviews</span></h2>
+  </div>
+  <div class="testimonial-slider">
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Best zinger in town! The sauce is unreal."</p><span>— Ali R.</span></div>
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Mala boti wrap is to die for. Huge portions."</p><span>— Sana K.</span></div>
+    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Finally a place that understands flavour."</p><span>— Bilal M.</span></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section class="instagram-feed">
+  <div class="section-header">
+    <div class="section-tag">@TEMPURAPOTATO</div>
+    <h2 class="section-title">Follow Us on <span style="color:var(--yellow)">Instagram</span></h2>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-item">🍔</div>
+    <div class="insta-item">🌯</div>
+    <div class="insta-item">🍟</div>
+    <div class="insta-item">🎉</div>
+  </div>
+</section>
+
+<!-- POPULAR COMBOS -->
+<section class="popular-combos">
+  <div class="section-header">
+    <div class="section-tag">CROWD FAVORITES</div>
+    <h2 class="section-title">Popular <span style="color:var(--yellow)">Combos</span></h2>
+  </div>
+  <div class="combos-grid" id="combos-grid"></div>
 </section>
 
 <!-- MENU SECTION -->
@@ -214,8 +169,6 @@
     <h2 class="section-title">What We Do Best</h2>
     <p class="section-sub">Every item made fresh. Every order with love.</p>
   </div>
-
-  <!-- CATEGORY TABS -->
   <div class="menu-tabs" id="menu-tabs">
     <button class="menu-tab active" data-cat="all">All</button>
     <button class="menu-tab" data-cat="burgers">Burgers</button>
@@ -223,10 +176,7 @@
     <button class="menu-tab" data-cat="deals">Deals</button>
     <button class="menu-tab" data-cat="sides">Sides</button>
   </div>
-
-  <div class="menu-grid" id="menu-grid">
-    <!-- Populated by JS -->
-  </div>
+  <div class="menu-grid" id="menu-grid"></div>
 </section>
 
 <!-- DEALS SECTION -->
@@ -236,22 +186,12 @@
     <h2 class="section-title">Value That Slaps</h2>
     <p class="section-sub">More food. Less spend. All flavour.</p>
   </div>
-  <div class="deals-grid" id="deals-grid">
-    <!-- Populated by JS -->
-  </div>
+  <div class="deals-grid" id="deals-grid"></div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-strip">
   <div class="marquee-track">
-    <span>ZINGER BURGER</span><span class="marquee-dot">✦</span>
-    <span>MALA BOTI WRAP</span><span class="marquee-dot">✦</span>
-    <span>CHICKEN SHAWARMA</span><span class="marquee-dot">✦</span>
-    <span>GRILL BURGER</span><span class="marquee-dot">✦</span>
-    <span>TEMPURA POTATO</span><span class="marquee-dot">✦</span>
-    <span>SEEKH KABAB ROLL</span><span class="marquee-dot">✦</span>
-    <span>ZINGER TWISTER</span><span class="marquee-dot">✦</span>
-    <span>DHAMAKA ROLL</span><span class="marquee-dot">✦</span>
     <span>ZINGER BURGER</span><span class="marquee-dot">✦</span>
     <span>MALA BOTI WRAP</span><span class="marquee-dot">✦</span>
     <span>CHICKEN SHAWARMA</span><span class="marquee-dot">✦</span>
@@ -279,22 +219,10 @@
       </div>
     </div>
     <div class="about-visual">
-      <div class="about-card ac1">
-        <div class="about-card-emoji">🍔</div>
-        <div class="about-card-text">Premium Burgers</div>
-      </div>
-      <div class="about-card ac2">
-        <div class="about-card-emoji">🌯</div>
-        <div class="about-card-text">Fresh Wraps</div>
-      </div>
-      <div class="about-card ac3">
-        <div class="about-card-emoji">🍟</div>
-        <div class="about-card-text">Crispy Sides</div>
-      </div>
-      <div class="about-card ac4">
-        <div class="about-card-emoji">🎉</div>
-        <div class="about-card-text">Epic Deals</div>
-      </div>
+      <div class="about-card ac1"><div class="about-card-emoji">🍔</div><div class="about-card-text">Premium Burgers</div></div>
+      <div class="about-card ac2"><div class="about-card-emoji">🌯</div><div class="about-card-text">Fresh Wraps</div></div>
+      <div class="about-card ac3"><div class="about-card-emoji">🍟</div><div class="about-card-text">Crispy Sides</div></div>
+      <div class="about-card ac4"><div class="about-card-emoji">🎉</div><div class="about-card-text">Epic Deals</div></div>
       <div class="about-ring"></div>
     </div>
   </div>
@@ -302,46 +230,16 @@
 
 <!-- CONTACT STRIP -->
 <section class="contact-strip">
-  <div class="cs-left">
-    <div class="cs-emoji">📞</div>
-    <div>
-      <div class="cs-label">Call to Order</div>
-      <div class="cs-value">+92-3044888775</div>
-    </div>
-  </div>
-  <div class="cs-center">
-    <a href="checkout.html" class="btn-primary">Order Online</a>
-  </div>
-  <div class="cs-right">
-    <div class="cs-emoji">📍</div>
-    <div>
-      <div class="cs-label">Find Us</div>
-      <div class="cs-value">Milad Chock, Lahore</div>
-    </div>
-  </div>
+  <div class="cs-left"><div class="cs-emoji">📞</div><div><div class="cs-label">Call to Order</div><div class="cs-value" id="contact-phone">+92-3044888775</div></div></div>
+  <div class="cs-center"><a href="checkout.html" class="btn-primary">Order Online</a></div>
+  <div class="cs-right"><div class="cs-emoji">📍</div><div><div class="cs-label">Find Us</div><div class="cs-value" id="contact-address">Milad Chock, Lahore</div></div></div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">
-    <span class="footer-logo-icon">🥔</span>
-    <div>
-      <div class="footer-brand">TEMPURA POTATO</div>
-      <div class="footer-tagline">Lahore's Finest</div>
-    </div>
-  </div>
-  <div class="footer-links">
-    <a href="#menu">Menu</a>
-    <a href="#deals">Deals</a>
-    <a href="#about">About</a>
-    <a href="checkout.html">Order</a>
-    <a href="rider.html">Riders</a>
-    <a href="admin.html" style="opacity:0.1;font-size:10px">·</a>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Tempura Potato. All rights reserved.</span>
-    <span>Main Bazar Nishat Colony, Milad Chock, Lahore</span>
-  </div>
+  <div class="footer-logo"><span class="footer-logo-icon">🥔</span><div><div class="footer-brand">TEMPURA POTATO</div><div class="footer-tagline">Lahore's Finest</div></div></div>
+  <div class="footer-links"><a href="#menu">Menu</a><a href="#deals">Deals</a><a href="#about">About</a><a href="checkout.html">Order</a><a href="rider.html">Riders</a></div>
+  <div class="footer-bottom"><span>© 2026 Tempura Potato. All rights reserved.</span><span>Main Bazar Nishat Colony, Milad Chock, Lahore</span></div>
 </footer>
 
 <!-- CART FLOATING BUTTON -->
@@ -350,42 +248,14 @@
   <span class="cart-float-count" id="cart-float-count">0</span>
 </div>
 
-<!-- PWA INSTALL POPUP -->
+<!-- PWA POPUP -->
 <div class="pwa-popup-overlay" id="pwa-popup-overlay">
-  <div class="pwa-popup">
-    <button class="pwa-popup-close" onclick="closePWAPopup()">✕</button>
-    <div class="pwa-popup-icon">🥔</div>
-    <div class="pwa-popup-brand">TEMPURA POTATO</div>
-    <h3 class="pwa-popup-title">Get the App</h3>
-    <p class="pwa-popup-desc">Install our app for a faster, smoother experience — and get <strong>20% OFF</strong> your first order!</p>
-    <button id="pwa-popup-install" class="btn-primary pwa-popup-btn">Install Free App</button>
-    <button onclick="closePWAPopup()" class="pwa-popup-skip">Maybe later</button>
-    <div class="pwa-popup-manual" id="pwa-popup-manual" style="display:none">
-      <p><strong>To install manually:</strong></p>
-      <ol>
-        <li>Tap the <strong>Share</strong> button in your browser (Safari: □↑, Chrome: ⋮)</li>
-        <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
-        <li>Tap <strong>"Add"</strong> to confirm</li>
-      </ol>
-    </div>
-  </div>
+  <div class="pwa-popup"><button class="pwa-popup-close" onclick="closePWAPopup()">✕</button><div class="pwa-popup-icon">🥔</div><div class="pwa-popup-brand">TEMPURA POTATO</div><h3 class="pwa-popup-title">Get the App</h3><p class="pwa-popup-desc">Install our app for a faster, smoother experience — and get <strong>20% OFF</strong> your first order!</p><button id="pwa-popup-install" class="btn-primary pwa-popup-btn">Install Free App</button><button onclick="closePWAPopup()" class="pwa-popup-skip">Maybe later</button><div class="pwa-popup-manual" id="pwa-popup-manual" style="display:none"><p><strong>To install manually:</strong></p><ol><li>Tap the <strong>Share</strong> button in your browser</li><li>Scroll down and tap <strong>"Add to Home Screen"</strong></li><li>Tap <strong>"Add"</strong> to confirm</li></ol></div></div>
 </div>
 
 <!-- ITEM MODAL -->
 <div class="item-modal-overlay" id="item-modal-overlay">
-  <div class="item-modal" id="item-modal">
-    <button class="item-modal-close" onclick="closeItemModal()">✕</button>
-    <div class="item-modal-emoji" id="modal-emoji">🍔</div>
-    <h3 id="modal-name">Item Name</h3>
-    <p id="modal-desc">Description</p>
-    <div class="item-modal-price" id="modal-price">Rs. 0</div>
-    <div class="item-modal-qty">
-      <button onclick="modalQtyChange(-1)">−</button>
-      <span id="modal-qty">1</span>
-      <button onclick="modalQtyChange(1)">+</button>
-    </div>
-    <button class="btn-primary item-modal-add" onclick="addModalToCart()">Add to Cart</button>
-  </div>
+  <div class="item-modal" id="item-modal"><button class="item-modal-close" onclick="closeItemModal()">✕</button><div class="item-modal-emoji" id="modal-emoji">🍔</div><h3 id="modal-name">Item Name</h3><p id="modal-desc">Description</p><div class="item-modal-price" id="modal-price">Rs. 0</div><div class="item-modal-qty"><button onclick="modalQtyChange(-1)">−</button><span id="modal-qty">1</span><button onclick="modalQtyChange(1)">+</button></div><button class="btn-primary item-modal-add" onclick="addModalToCart()">Add to Cart</button></div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>

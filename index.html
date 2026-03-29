@@ -4,21 +4,16 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="theme-color" content="#0a0a0a"/>
-<meta name="description" content="Tempura Potato — Lahore's finest burgers, wraps, deals & more. Premium fast food at unbeatable prices. Order online for delivery or pickup."/>
-<meta name="keywords" content="Tempura Potato, Lahore burger, best burger Lahore, Milad Chock, fast food Lahore, zinger burger, chicken wrap"/>
-<meta property="og:title" content="Tempura Potato — Lahore's Best Burgers"/>
-<meta property="og:description" content="Premium burgers, wraps & deals. Fast food done right in Lahore."/>
-<meta property="og:type" content="website"/>
+<meta name="description" content="Tempura Potato — Lahore's finest burgers, wraps, deals & more."/>
 <title>Tempura Potato — Lahore's Finest</title>
 <link rel="manifest" href="manifest.json"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥔</text></svg>"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- PWA INSTALL BANNER -->
+<!-- PWA BANNER -->
 <div id="pwa-banner" class="pwa-banner">
   <span>🎉 Install our app & get <strong>20% OFF</strong> your first order!</span>
   <button id="pwa-install-btn" class="pwa-install-btn">Install App</button>
@@ -28,7 +23,7 @@
 <!-- NAV -->
 <nav class="navbar" id="navbar">
   <div class="nav-logo">
-    <div class="nav-logo-icon">🥔</div>
+    <div class="nav-logo-icon">🍔</div>
     <div class="nav-logo-text">
       <span class="nav-brand">TEMPURA</span>
       <span class="nav-sub">POTATO</span>
@@ -40,12 +35,9 @@
     <a href="#about">About</a>
     <a href="checkout.html" class="nav-order-btn">Order Now</a>
   </div>
-  <div class="nav-hamburger" id="nav-hamburger">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- MOBILE NAV -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#menu" onclick="closeMobileMenu()">Menu</a>
   <a href="#deals" onclick="closeMobileMenu()">Deals</a>
@@ -77,7 +69,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <img id="hero-image" src="https://via.placeholder.com/500x500?text=Burger" alt="Signature Burger" style="width:100%; max-width:450px; border-radius:30px; filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
+    <img id="hero-image" src="https://via.placeholder.com/500x500?text=Burger" alt="Signature Burger">
   </div>
   <div class="hero-scroll-hint">
     <span>Scroll to explore</span>
@@ -85,7 +77,7 @@
   </div>
 </section>
 
-<!-- SCROLL GALLERY (replaces apple burger effect) -->
+<!-- SCROLL GALLERY (real images) -->
 <section class="scroll-gallery" id="scroll-gallery">
   <div class="section-header">
     <div class="section-tag">VISUAL FEAST</div>
@@ -146,14 +138,14 @@
     <h2 class="section-title">Follow Us on <span style="color:var(--yellow)">Instagram</span></h2>
   </div>
   <div class="insta-grid">
-    <div class="insta-item">🍔</div>
-    <div class="insta-item">🌯</div>
-    <div class="insta-item">🍟</div>
-    <div class="insta-item">🎉</div>
+    <div class="insta-item"><img src="https://via.placeholder.com/200x200?text=Insta+1" alt="insta"></div>
+    <div class="insta-item"><img src="https://via.placeholder.com/200x200?text=Insta+2" alt="insta"></div>
+    <div class="insta-item"><img src="https://via.placeholder.com/200x200?text=Insta+3" alt="insta"></div>
+    <div class="insta-item"><img src="https://via.placeholder.com/200x200?text=Insta+4" alt="insta"></div>
   </div>
 </section>
 
-<!-- POPULAR COMBOS -->
+<!-- POPULAR COMBOS (real images) -->
 <section class="popular-combos">
   <div class="section-header">
     <div class="section-tag">CROWD FAVORITES</div>
@@ -162,7 +154,7 @@
   <div class="combos-grid" id="combos-grid"></div>
 </section>
 
-<!-- MENU SECTION -->
+<!-- MENU SECTION (real images) -->
 <section class="menu-section" id="menu">
   <div class="section-header">
     <div class="section-tag">THE MENU</div>
@@ -179,7 +171,7 @@
   <div class="menu-grid" id="menu-grid"></div>
 </section>
 
-<!-- DEALS SECTION -->
+<!-- DEALS SECTION (real images) -->
 <section class="deals-section" id="deals">
   <div class="section-header">
     <div class="section-tag">🔥 HOT DEALS</div>
@@ -197,9 +189,6 @@
     <span>CHICKEN SHAWARMA</span><span class="marquee-dot">✦</span>
     <span>GRILL BURGER</span><span class="marquee-dot">✦</span>
     <span>TEMPURA POTATO</span><span class="marquee-dot">✦</span>
-    <span>SEEKH KABAB ROLL</span><span class="marquee-dot">✦</span>
-    <span>ZINGER TWISTER</span><span class="marquee-dot">✦</span>
-    <span>DHAMAKA ROLL</span><span class="marquee-dot">✦</span>
   </div>
 </div>
 
@@ -209,8 +198,7 @@
     <div class="about-text">
       <div class="section-tag">OUR STORY</div>
       <h2>Born in Lahore.<br/>Built on <em>Flavour.</em></h2>
-      <p>Tempura Potato started with a simple obsession — make food so good that people talk about it for days. No shortcuts. No compromises. Just premium ingredients, bold flavours, and prices that respect your pocket.</p>
-      <p>Located at Main Bazar Nishat Colony, Milad Chock — we've become the go-to spot faster than anyone expected. Word of mouth is our marketing. Quality is our brand.</p>
+      <p>Tempura Potato started with a simple obsession — make food so good that people talk about it for days.</p>
       <div class="about-features">
         <div class="af-item"><span class="af-icon">🔥</span><span>Made Fresh Daily</span></div>
         <div class="af-item"><span class="af-icon">⚡</span><span>30 Min Delivery</span></div>
@@ -237,25 +225,22 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo"><span class="footer-logo-icon">🥔</span><div><div class="footer-brand">TEMPURA POTATO</div><div class="footer-tagline">Lahore's Finest</div></div></div>
+  <div class="footer-logo"><span class="footer-logo-icon">🍔</span><div><div class="footer-brand">TEMPURA POTATO</div><div class="footer-tagline">Lahore's Finest</div></div></div>
   <div class="footer-links"><a href="#menu">Menu</a><a href="#deals">Deals</a><a href="#about">About</a><a href="checkout.html">Order</a><a href="rider.html">Riders</a></div>
   <div class="footer-bottom"><span>© 2026 Tempura Potato. All rights reserved.</span><span>Main Bazar Nishat Colony, Milad Chock, Lahore</span></div>
 </footer>
 
-<!-- CART FLOATING BUTTON -->
 <div class="cart-float" id="cart-float" onclick="window.location.href='checkout.html'">
   <span class="cart-float-icon">🛒</span>
   <span class="cart-float-count" id="cart-float-count">0</span>
 </div>
 
-<!-- PWA POPUP -->
 <div class="pwa-popup-overlay" id="pwa-popup-overlay">
-  <div class="pwa-popup"><button class="pwa-popup-close" onclick="closePWAPopup()">✕</button><div class="pwa-popup-icon">🥔</div><div class="pwa-popup-brand">TEMPURA POTATO</div><h3 class="pwa-popup-title">Get the App</h3><p class="pwa-popup-desc">Install our app for a faster, smoother experience — and get <strong>20% OFF</strong> your first order!</p><button id="pwa-popup-install" class="btn-primary pwa-popup-btn">Install Free App</button><button onclick="closePWAPopup()" class="pwa-popup-skip">Maybe later</button><div class="pwa-popup-manual" id="pwa-popup-manual" style="display:none"><p><strong>To install manually:</strong></p><ol><li>Tap the <strong>Share</strong> button in your browser</li><li>Scroll down and tap <strong>"Add to Home Screen"</strong></li><li>Tap <strong>"Add"</strong> to confirm</li></ol></div></div>
+  <div class="pwa-popup"><button class="pwa-popup-close" onclick="closePWAPopup()">✕</button><div class="pwa-popup-icon">🍔</div><div class="pwa-popup-brand">TEMPURA POTATO</div><h3 class="pwa-popup-title">Get the App</h3><p class="pwa-popup-desc">Install our app for a faster, smoother experience — and get <strong>20% OFF</strong> your first order!</p><button id="pwa-popup-install" class="btn-primary pwa-popup-btn">Install Free App</button><button onclick="closePWAPopup()" class="pwa-popup-skip">Maybe later</button><div class="pwa-popup-manual" id="pwa-popup-manual" style="display:none"><p><strong>To install manually:</strong></p><ol><li>Tap the <strong>Share</strong> button</li><li>Tap <strong>"Add to Home Screen"</strong></li><li>Tap <strong>"Add"</strong> to confirm</li></ol></div></div>
 </div>
 
-<!-- ITEM MODAL -->
 <div class="item-modal-overlay" id="item-modal-overlay">
-  <div class="item-modal" id="item-modal"><button class="item-modal-close" onclick="closeItemModal()">✕</button><div class="item-modal-emoji" id="modal-emoji">🍔</div><h3 id="modal-name">Item Name</h3><p id="modal-desc">Description</p><div class="item-modal-price" id="modal-price">Rs. 0</div><div class="item-modal-qty"><button onclick="modalQtyChange(-1)">−</button><span id="modal-qty">1</span><button onclick="modalQtyChange(1)">+</button></div><button class="btn-primary item-modal-add" onclick="addModalToCart()">Add to Cart</button></div>
+  <div class="item-modal"><button class="item-modal-close" onclick="closeItemModal()">✕</button><img id="modal-img" style="width:100px; height:100px; object-fit:cover; border-radius:20px; margin:0 auto 12px; display:none;"><div class="item-modal-emoji" id="modal-emoji">🍔</div><h3 id="modal-name">Item Name</h3><p id="modal-desc">Description</p><div class="item-modal-price" id="modal-price">Rs. 0</div><div class="item-modal-qty"><button onclick="modalQtyChange(-1)">−</button><span id="modal-qty">1</span><button onclick="modalQtyChange(1)">+</button></div><button class="btn-primary item-modal-add" onclick="addModalToCart()">Add to Cart</button></div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>

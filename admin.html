@@ -17,24 +17,13 @@ body{background:var(--black);}
 .login-btn{width:100%;margin-top:8px;}
 .login-error{color:#ff4444;font-size:13px;margin-top:8px;display:none;}
 
-/* ADMIN LAYOUT */
 .admin-app{display:none;min-height:100vh;}
-.admin-sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:260px;
-  background:var(--black3);border-right:1px solid rgba(255,255,255,0.06);
-  display:flex;flex-direction:column;z-index:100;
-  transition:transform 0.3s ease;
-}
+.admin-sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--black3);border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;z-index:100;transition:transform 0.3s ease;}
 .admin-logo{padding:28px 24px 20px;border-bottom:1px solid rgba(255,255,255,0.06);}
 .admin-logo-text{font-family:'Bebas Neue',cursive;font-size:16px;color:var(--yellow);letter-spacing:2px;}
 .admin-logo-sub{font-size:11px;color:var(--gray);margin-top:2px;}
 .admin-nav{flex:1;padding:16px 0;overflow-y:auto;}
-.admin-nav-item{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 24px;font-size:14px;font-weight:600;
-  color:var(--gray);cursor:pointer;transition:var(--transition);
-  border-left:3px solid transparent;
-}
+.admin-nav-item{display:flex;align-items:center;gap:12px;padding:13px 24px;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;transition:var(--transition);border-left:3px solid transparent;}
 .admin-nav-item:hover{color:var(--white);background:rgba(255,255,255,0.04);}
 .admin-nav-item.active{color:var(--yellow);border-left-color:var(--yellow);background:rgba(245,200,66,0.06);}
 .admin-nav-item .nav-icon{font-size:18px;min-width:22px;}
@@ -44,29 +33,22 @@ body{background:var(--black);}
 .admin-logout button:hover{border-color:var(--yellow);color:var(--yellow);}
 
 .admin-main{margin-left:260px;padding:32px;min-height:100vh;}
-@media(max-width:900px){
-  .admin-sidebar{transform:translateX(-100%);}
-  .admin-sidebar.open{transform:translateX(0);}
-  .admin-main{margin-left:0;}
-}
+@media(max-width:900px){ .admin-sidebar{transform:translateX(-100%);} .admin-sidebar.open{transform:translateX(0);} .admin-main{margin-left:0;} }
 .admin-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;}
 .admin-topbar h1{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--white);letter-spacing:1px;}
 .admin-topbar h1 span{color:var(--yellow);}
 .admin-menu-toggle{display:none;background:var(--black3);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:10px 14px;border-radius:8px;cursor:pointer;font-size:20px;}
 @media(max-width:900px){.admin-menu-toggle{display:block;}}
 
-/* PANELS */
 .admin-panel{display:none;}
 .admin-panel.active{display:block;}
 
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:32px;}
 .stat-card{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:24px;}
 .stat-card-label{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
 .stat-card-value{font-family:'Bebas Neue',cursive;font-size:40px;color:var(--yellow);}
 .stat-card-sub{font-size:12px;color:var(--gray2);margin-top:4px;}
 
-/* ORDERS TABLE */
 .orders-table{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);overflow:hidden;}
 .table-header{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;}
 .table-header h3{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);}
@@ -88,7 +70,6 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 .action-btn.decline{border-color:rgba(244,67,54,0.3);color:#F44336;}
 .action-btn.decline:hover{background:rgba(244,67,54,0.1);}
 
-/* FORM SECTION */
 .settings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-bottom:24px;}
 .settings-card{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:28px;}
 .settings-card h3{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--white);letter-spacing:1px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;}
@@ -101,23 +82,16 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 .save-btn{background:var(--yellow);color:var(--black);border:none;padding:12px 28px;border-radius:25px;font-weight:700;font-size:14px;cursor:pointer;transition:var(--transition);}
 .save-btn:hover{background:var(--yellow-dark);transform:scale(1.03);}
 
-/* RIDER SECTION */
 .rider-generate-box{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:28px;margin-bottom:24px;}
 .rider-code-display{font-family:'Bebas Neue',cursive;font-size:48px;color:var(--yellow);letter-spacing:8px;text-align:center;padding:20px;background:rgba(245,200,66,0.08);border-radius:12px;margin:16px 0;}
 .riders-list{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);overflow:hidden;}
 
-/* DEV SETTINGS */
 .dev-lock{text-align:center;padding:60px 24px;}
 .dev-lock-icon{font-size:64px;margin-bottom:16px;}
 .dev-lock h2{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--white);margin-bottom:8px;}
 .dev-lock p{font-size:14px;color:var(--gray);margin-bottom:24px;}
 
-/* ALERT */
-.order-alert{
-  position:fixed;inset:0;z-index:9999;
-  background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;
-  display:none;
-}
+.order-alert{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;display:none;}
 .order-alert.show{display:flex;}
 .order-alert-box{background:var(--black3);border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;max-width:420px;width:90%;animation:alertPop 0.4s ease;}
 @keyframes alertPop{from{transform:scale(0.8);}to{transform:scale(1);}}
@@ -132,7 +106,6 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 </head>
 <body>
 
-<!-- ORDER ALERT -->
 <div class="order-alert" id="order-alert">
   <div class="order-alert-box">
     <div class="alert-emoji">🔔</div>
@@ -145,7 +118,6 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   </div>
 </div>
 
-<!-- LOGIN -->
 <div class="admin-login" id="admin-login">
   <div class="login-box">
     <div class="login-logo">🥔</div>
@@ -157,14 +129,9 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   </div>
 </div>
 
-<!-- ADMIN APP -->
 <div class="admin-app" id="admin-app">
   <div class="admin-sidebar" id="admin-sidebar">
-    <div class="admin-logo">
-      <div>🥔</div>
-      <div class="admin-logo-text">TEMPURA POTATO</div>
-      <div class="admin-logo-sub">Admin Dashboard</div>
-    </div>
+    <div class="admin-logo"><div>🥔</div><div class="admin-logo-text">TEMPURA POTATO</div><div class="admin-logo-sub">Admin Dashboard</div></div>
     <div class="admin-nav">
       <div class="admin-nav-section">Main</div>
       <div class="admin-nav-item active" onclick="showPanel('dashboard')"><span class="nav-icon">📊</span>Dashboard</div>
@@ -186,7 +153,6 @@ tr:hover td{background:rgba(255,255,255,0.02);}
       <div style="font-size:13px;color:var(--gray)" id="admin-time"></div>
     </div>
 
-    <!-- DASHBOARD -->
     <div class="admin-panel active" id="panel-dashboard">
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-card-label">Today's Orders</div><div class="stat-card-value" id="stat-today">0</div><div class="stat-card-sub">All statuses</div></div>
@@ -194,133 +160,50 @@ tr:hover td{background:rgba(255,255,255,0.02);}
         <div class="stat-card"><div class="stat-card-label">Revenue Today</div><div class="stat-card-value" id="stat-revenue">0</div><div class="stat-card-sub">Rs. delivered orders</div></div>
         <div class="stat-card"><div class="stat-card-label">Active Riders</div><div class="stat-card-value" id="stat-riders">0</div><div class="stat-card-sub">Registered</div></div>
       </div>
-      <div class="orders-table">
-        <div class="table-header"><h3>Recent Orders</h3></div>
-        <div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="recent-orders-tbody"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:40px;">Loading orders...</td></tr></tbody></table></div>
-      </div>
+      <div class="orders-table"><div class="table-header"><h3>Recent Orders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="recent-orders-tbody"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:40px;">Loading orders...</td></tr></tbody></table></div></div>
     </div>
 
-    <!-- ORDERS -->
     <div class="admin-panel" id="panel-orders">
-      <div class="orders-table">
-        <div class="table-header"><h3>All Orders</h3><div id="orders-filter" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
-        <div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="all-orders-tbody"></tbody></table></div>
-      </div>
+      <div class="orders-table"><div class="table-header"><h3>All Orders</h3><div id="orders-filter" style="display:flex;gap:8px;flex-wrap:wrap"></div></div><div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="all-orders-tbody"></tbody></table></div></div>
     </div>
 
-    <!-- MENU -->
     <div class="admin-panel" id="panel-menu">
-      <div class="orders-table">
-        <div class="table-header"><h3>Menu Items</h3><button class="save-btn" onclick="exportMenuToFirebase()">Sync to Firebase</button></div>
-        <div style="overflow-x:auto"><table><thead><tr><th>Emoji</th><th>Name</th><th>Category</th><th>Price</th><th>Edit Price</th></tr></thead>
-        <tbody id="menu-tbody"></tbody></table></div>
-      </div>
+      <div class="orders-table"><div class="table-header"><h3>Menu Items</h3><button class="save-btn" onclick="exportMenuToFirebase()">Sync to Firebase</button></div><div style="overflow-x:auto"><table><thead><tr><th>Emoji</th><th>Name</th><th>Category</th><th>Price</th><th>Edit Price</th></tr></thead><tbody id="menu-tbody"></tbody></table></div></div>
     </div>
 
-    <!-- RIDERS -->
     <div class="admin-panel" id="panel-riders">
-      <div class="settings-card" style="margin-bottom:24px;">
-        <h3>Register New Rider</h3>
-        <div class="form-row"><label>Rider Name</label><input type="text" id="rider-name-inp" placeholder="Full name"/></div>
-        <div class="form-row"><label>Phone</label><input type="tel" id="rider-phone-inp" placeholder="+92 3xx xxxxxxx"/></div>
-        <div class="form-row"><label>Vehicle</label><input type="text" id="rider-vehicle-inp" placeholder="Honda 125 • ABC-123"/></div>
-        <button class="save-btn" onclick="registerRider()">Generate Code & Register</button>
-      </div>
-      <div id="new-rider-code" style="display:none;" class="rider-generate-box">
-        <h3 style="font-family:'Bebas Neue',cursive;font-size:20px;color:var(--white);">Rider Code Generated!</h3>
-        <div class="rider-code-display" id="rider-code-display">—</div>
-        <p style="font-size:13px;color:var(--gray);text-align:center;">Share this code with the rider. They'll use it to log into the Rider App.</p>
-      </div>
-      <div class="riders-list">
-        <div class="table-header"><h3>Registered Riders</h3></div>
-        <div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Code</th><th>Status</th></tr></thead><tbody id="riders-tbody"><tr><td colspan="5" style="text-align:center;color:var(--gray);padding:40px;">No riders registered yet</td></tr></tbody></table></div>
-      </div>
+      <div class="settings-card" style="margin-bottom:24px;"><h3>Register New Rider</h3><div class="form-row"><label>Rider Name</label><input type="text" id="rider-name-inp" placeholder="Full name"/></div><div class="form-row"><label>Phone</label><input type="tel" id="rider-phone-inp" placeholder="+92 3xx xxxxxxx"/></div><div class="form-row"><label>Vehicle</label><input type="text" id="rider-vehicle-inp" placeholder="Honda 125 • ABC-123"/></div><button class="save-btn" onclick="registerRider()">Generate Code & Register</button></div>
+      <div id="new-rider-code" style="display:none;" class="rider-generate-box"><h3 style="font-family:'Bebas Neue',cursive;font-size:20px;color:var(--white);">Rider Code Generated!</h3><div class="rider-code-display" id="rider-code-display">—</div><p style="font-size:13px;color:var(--gray);text-align:center;">Share this code with the rider. They'll use it to log into the Rider App.</p></div>
+      <div class="riders-list"><div class="table-header"><h3>Registered Riders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Code</th><th>Status</th></tr></thead><tbody id="riders-tbody"><tr><td colspan="5" style="text-align:center;color:var(--gray);padding:40px;">No riders registered yet</td></tr></tbody></table></div></div>
     </div>
 
-    <!-- BRANDING -->
     <div class="admin-panel" id="panel-branding">
       <div class="settings-grid">
-        <div class="settings-card">
-          <h3>Brand Identity</h3>
-          <div class="form-row"><label>Restaurant Name</label><input type="text" id="brand-name" value="Tempura Potato"/></div>
-          <div class="form-row"><label>Tagline</label><input type="text" id="brand-tagline" value="Lahore's Finest"/></div>
-          <div class="form-row"><label>Phone</label><input type="text" id="brand-phone" value="+92-3044888775"/></div>
-          <div class="form-row"><label>Address</label><input type="text" id="brand-address" value="Main Bazar Nishat Colony, Milad Chock, Lahore"/></div>
-          <button class="save-btn" onclick="saveBranding()">Save Branding</button>
-        </div>
-        <div class="settings-card">
-          <h3>Colours</h3>
-          <div class="form-row">
-            <label>Accent Color (Yellow)</label>
-            <div class="color-preview">
-              <input type="color" id="brand-color" value="#f5c842"/>
-              <input type="text" id="brand-color-hex" value="#f5c842" style="flex:1"/>
-            </div>
-          </div>
-          <div class="form-row"><label>Background Color</label><input type="color" id="brand-bg" value="#0a0a0a"/></div>
-          <button class="save-btn" onclick="saveColors()">Apply Colors</button>
-        </div>
-        <div class="settings-card">
-          <h3>WhatsApp Order Number</h3>
-          <div class="form-row"><label>WhatsApp Number (with country code)</label><input type="tel" id="wa-number" placeholder="923044888775"/></div>
-          <div class="form-row"><label>Delivery Fee (Rs.)</label><input type="number" id="delivery-fee-inp" value="60"/></div>
-          <div class="form-row"><label>Min. Order Amount (Rs.)</label><input type="number" id="min-order-inp" value="0"/></div>
-          <button class="save-btn" onclick="saveSettings()">Save Settings</button>
-        </div>
-        <div class="settings-card">
-          <h3>Banner / Announcement</h3>
-          <div class="form-row"><label>Top Banner Text</label><input type="text" id="banner-text" value="Install the app & get 20% off your first order!"/></div>
-          <div class="form-row"><label>Hero Headline</label><input type="text" id="hero-headline" value="TASTE THE OBSESSION"/></div>
-          <div class="form-row"><label>Hero Subtext</label><textarea id="hero-sub" rows="3">Premium burgers. Legendary wraps. Deals that hit different.</textarea></div>
-          <button class="save-btn" onclick="saveBanner()">Save Banner</button>
-        </div>
+        <div class="settings-card"><h3>Brand Identity</h3><div class="form-row"><label>Restaurant Name</label><input type="text" id="brand-name" value="Tempura Potato"/></div><div class="form-row"><label>Tagline</label><input type="text" id="brand-tagline" value="Lahore's Finest"/></div><div class="form-row"><label>Phone</label><input type="text" id="brand-phone" value="+92-3044888775"/></div><div class="form-row"><label>Address</label><input type="text" id="brand-address" value="Main Bazar Nishat Colony, Milad Chock, Lahore"/></div><button class="save-btn" onclick="saveBranding()">Save Branding</button></div>
+        <div class="settings-card"><h3>Colours</h3><div class="form-row"><label>Accent Color (Yellow)</label><div class="color-preview"><input type="color" id="brand-color" value="#f5c842"/><input type="text" id="brand-color-hex" value="#f5c842" style="flex:1"/></div></div><div class="form-row"><label>Background Color</label><input type="color" id="brand-bg" value="#0a0a0a"/></div><button class="save-btn" onclick="saveColors()">Apply Colors</button></div>
+        <div class="settings-card"><h3>WhatsApp Order Number</h3><div class="form-row"><label>WhatsApp Number (with country code)</label><input type="tel" id="wa-number" placeholder="923044888775"/></div><div class="form-row"><label>Delivery Fee (Rs.)</label><input type="number" id="delivery-fee-inp" value="60"/></div><div class="form-row"><label>Min. Order Amount (Rs.)</label><input type="number" id="min-order-inp" value="0"/></div><button class="save-btn" onclick="saveSettings()">Save Settings</button></div>
+        <div class="settings-card"><h3>Banner / Announcement</h3><div class="form-row"><label>Top Banner Text</label><input type="text" id="banner-text" value="Install the app & get 20% off your first order!"/></div><div class="form-row"><label>Hero Headline</label><input type="text" id="hero-headline" value="TASTE THE OBSESSION"/></div><div class="form-row"><label>Hero Subtext</label><textarea id="hero-sub" rows="3">Premium burgers. Legendary wraps. Deals that hit different.</textarea></div><button class="save-btn" onclick="saveBanner()">Save Banner</button></div>
       </div>
     </div>
 
-    <!-- DEV SETTINGS -->
     <div class="admin-panel" id="panel-devsettings">
-      <div id="dev-locked">
-        <div class="dev-lock">
-          <div class="dev-lock-icon">🔐</div>
-          <h2>Developer Settings</h2>
-          <p>This area is restricted. Enter the developer password to continue.</p>
-          <input class="login-input" type="password" id="dev-pass" placeholder="Developer password" style="max-width:300px;margin:0 auto 16px;" onkeydown="if(event.key==='Enter')loginDev()"/>
-          <br/><button class="btn-primary" onclick="loginDev()">Unlock →</button>
-          <div class="login-error" id="dev-error">Wrong password.</div>
-        </div>
-      </div>
+      <div id="dev-locked"><div class="dev-lock"><div class="dev-lock-icon">🔐</div><h2>Developer Settings</h2><p>This area is restricted. Enter the developer password to continue.</p><input class="login-input" type="password" id="dev-pass" placeholder="Developer password" style="max-width:300px;margin:0 auto 16px;" onkeydown="if(event.key==='Enter')loginDev()"/><br/><button class="btn-primary" onclick="loginDev()">Unlock →</button><div class="login-error" id="dev-error">Wrong password.</div></div></div>
       <div id="dev-unlocked" style="display:none;">
         <div class="settings-grid">
-          <div class="settings-card">
-            <h3>Admin Password</h3>
-            <div class="form-row"><label>New Admin Password</label><input type="password" id="new-admin-pass" placeholder="New password"/></div>
-            <div class="form-row"><label>Developer Password</label><input type="password" id="new-dev-pass" placeholder="New dev password"/></div>
-            <button class="save-btn" onclick="savePasswords()">Update Passwords</button>
+          <div class="settings-card"><h3>🖼️ Image Manager (ImgBB)</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Upload hero image and gallery images. They will appear on the homepage instantly.</p>
+            <div class="form-row"><label>Hero Image (Main banner)</label><input type="file" id="upload-hero" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('hero')">Upload Hero</button><div id="hero-preview" style="margin-top:8px;"></div></div>
+            <div class="form-row"><label>Gallery Image 1 (Zinger)</label><input type="file" id="upload-gallery1" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery1')">Upload</button></div>
+            <div class="form-row"><label>Gallery Image 2 (Shawarma)</label><input type="file" id="upload-gallery2" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery2')">Upload</button></div>
+            <div class="form-row"><label>Gallery Image 3 (Grill Burger)</label><input type="file" id="upload-gallery3" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery3')">Upload</button></div>
+            <div class="form-row"><label>Gallery Image 4 (Mala Boti)</label><input type="file" id="upload-gallery4" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery4')">Upload</button></div>
           </div>
-          <div class="settings-card">
-            <h3>Firebase Config</h3>
-            <div class="form-row"><label>Database URL</label><input type="text" id="fb-url" value="https://tempura-potato-deep-default-rtdb.firebaseio.com"/></div>
-            <div class="form-row"><label>Project ID</label><input type="text" id="fb-project" value="tempura-potato-deep"/></div>
-            <button class="save-btn" onclick="saveFirebase()">Save Config</button>
-          </div>
-          <div class="settings-card">
-            <h3>Full Rebranding Tool</h3>
-            <p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Change every visible element of the website from here.</p>
-            <div class="form-row"><label>Logo Emoji</label><input type="text" id="rebrand-logo" value="🥔"/></div>
-            <div class="form-row"><label>Primary Font</label><select id="rebrand-font"><option>Bebas Neue</option><option>Oswald</option><option>Barlow Condensed</option></select></div>
-            <div class="form-row"><label>Hero Background Style</label><select id="rebrand-bg"><option value="grid">Grid Pattern</option><option value="solid">Solid Dark</option><option value="gradient">Gradient</option></select></div>
-            <button class="save-btn" onclick="applyRebranding()">Apply Rebranding</button>
-          </div>
-          <div class="settings-card" style="border-color:rgba(244,67,54,0.3);">
-            <h3 style="color:#F44336;">Danger Zone</h3>
-            <p style="font-size:13px;color:var(--gray);margin-bottom:16px;">These actions are irreversible.</p>
-            <button style="background:#F44336;color:#fff;border:none;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;margin-bottom:10px;width:100%;" onclick="confirmClearOrders()">Clear All Orders</button>
-            <button style="background:transparent;border:1px solid rgba(244,67,54,0.3);color:#F44336;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;width:100%;" onclick="confirmResetSettings()">Reset All Settings</button>
-          </div>
+          <div class="settings-card"><h3>Admin Password</h3><div class="form-row"><label>New Admin Password</label><input type="password" id="new-admin-pass" placeholder="New password"/></div><div class="form-row"><label>Developer Password</label><input type="password" id="new-dev-pass" placeholder="New dev password"/></div><button class="save-btn" onclick="savePasswords()">Update Passwords</button></div>
+          <div class="settings-card"><h3>Firebase Config</h3><div class="form-row"><label>Database URL</label><input type="text" id="fb-url" value="https://tempura-potato-deep-default-rtdb.firebaseio.com"/></div><div class="form-row"><label>Project ID</label><input type="text" id="fb-project" value="tempura-potato-deep"/></div><button class="save-btn" onclick="saveFirebase()">Save Config</button></div>
+          <div class="settings-card"><h3>Full Rebranding Tool</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Change every visible element of the website from here.</p><div class="form-row"><label>Logo Emoji</label><input type="text" id="rebrand-logo" value="🥔"/></div><div class="form-row"><label>Primary Font</label><select id="rebrand-font"><option>Bebas Neue</option><option>Oswald</option><option>Barlow Condensed</option></select></div><div class="form-row"><label>Hero Background Style</label><select id="rebrand-bg"><option value="grid">Grid Pattern</option><option value="solid">Solid Dark</option><option value="gradient">Gradient</option></select></div><button class="save-btn" onclick="applyRebranding()">Apply Rebranding</button></div>
+          <div class="settings-card" style="border-color:rgba(244,67,54,0.3);"><h3 style="color:#F44336;">Danger Zone</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">These actions are irreversible.</p><button style="background:#F44336;color:#fff;border:none;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;margin-bottom:10px;width:100%;" onclick="confirmClearOrders()">Clear All Orders</button><button style="background:transparent;border:1px solid rgba(244,67,54,0.3);color:#F44336;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;width:100%;" onclick="confirmResetSettings()">Reset All Settings</button></div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -331,11 +214,9 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <script src="app.js"></script>
 <script>
-// ─── PASSWORDS (stored in localStorage for demo; use Firebase in prod) ───
 function getAdminPass(){ return localStorage.getItem('tp_admin_pass') || 'admin123'; }
 function getDevPass(){ return localStorage.getItem('tp_dev_pass') || 'devpass2026'; }
 
-// ─── LOGIN ──────────────────────────────────────────────────
 function loginAdmin() {
   const pass = document.getElementById('admin-pass').value;
   if (pass === getAdminPass()) {
@@ -353,7 +234,6 @@ function logoutAdmin() {
   location.reload();
 }
 
-// Check session
 if (localStorage.getItem('tp_admin_session')) {
   document.getElementById('admin-login').style.display='none';
   document.getElementById('admin-app').style.display='flex';
@@ -370,10 +250,8 @@ function loginDev() {
   }
 }
 
-// ─── PANEL NAVIGATION ──────────────────────────────────────
-const panelTitles = {dashboard:'Dash<span style="color:var(--yellow)">board</span>',orders:'All <span style="color:var(--yellow)">Orders</span>',menu:'Menu <span style="color:var(--yellow)">Items</span>',riders:'Rider <span style="color:var(--yellow)">Management</span>',branding:'Brand<span style="color:var(--yellow)">ing</span>',devsettings:'Dev <span style="color:var(--yellow)">Settings</span>'};
-
 function showPanel(name) {
+  const panelTitles = {dashboard:'Dash<span style="color:var(--yellow)">board</span>',orders:'All <span style="color:var(--yellow)">Orders</span>',menu:'Menu <span style="color:var(--yellow)">Items</span>',riders:'Rider <span style="color:var(--yellow)">Management</span>',branding:'Brand<span style="color:var(--yellow)">ing</span>',devsettings:'Dev <span style="color:var(--yellow)">Settings</span>'};
   document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + name)?.classList.add('active');
@@ -382,7 +260,6 @@ function showPanel(name) {
   document.getElementById('admin-sidebar').classList.remove('open');
 }
 
-// ─── INIT ──────────────────────────────────────────────────
 let allOrders = {};
 let alertOrderId = null;
 
@@ -408,7 +285,6 @@ function updateClock() {
   document.getElementById('admin-time').textContent = now.toLocaleString('en-PK',{dateStyle:'medium',timeStyle:'short'});
 }
 
-// ─── DASHBOARD ─────────────────────────────────────────────
 function renderDashboard() {
   const today = new Date().toDateString();
   const orders = Object.values(allOrders);
@@ -423,7 +299,6 @@ function renderDashboard() {
   renderOrderRows(document.getElementById('recent-orders-tbody'), orders.slice(-10).reverse(), false);
 }
 
-// ─── ORDERS ────────────────────────────────────────────────
 function renderOrdersTable() {
   renderOrderRows(document.getElementById('all-orders-tbody'), Object.values(allOrders).reverse(), true);
 }
@@ -456,7 +331,6 @@ async function updateOrderStatus(id, status) {
   if (alertOrderId === id) document.getElementById('order-alert').classList.remove('show');
 }
 
-// ─── ORDER ALERT ───────────────────────────────────────────
 let knownOrderIds = new Set();
 function checkNewOrders() {
   Object.entries(allOrders).forEach(([id, order]) => {
@@ -465,7 +339,6 @@ function checkNewOrders() {
       if (knownOrderIds.size > 1) triggerOrderAlert(id, order);
     }
   });
-  // Add all existing on first load
   if (knownOrderIds.size === 0) Object.keys(allOrders).forEach(id => knownOrderIds.add(id));
 }
 
@@ -473,7 +346,6 @@ function triggerOrderAlert(id, order) {
   alertOrderId = id;
   document.getElementById('alert-order-summary').textContent = `${order.customer?.name||'Customer'} ordered ${(order.items||[]).length} item(s) — Rs. ${order.total}`;
   document.getElementById('order-alert').classList.add('show');
-  // Play beep
   try { new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAA==').play(); } catch(e) {}
 }
 
@@ -481,10 +353,8 @@ window.respondOrder = function(status) {
   if (alertOrderId) updateOrderStatus(alertOrderId, status);
 };
 
-// ─── MENU TABLE ────────────────────────────────────────────
 function renderMenuTable() {
   const tbody = document.getElementById('menu-tbody');
-  // menuData from app.js
   const data = window.TP?.menuData || [];
   tbody.innerHTML = data.map(item => `
     <tr>
@@ -510,10 +380,7 @@ function exportMenuToFirebase() {
   db.ref().update(updates).then(() => showToast('Menu synced to Firebase ✅'));
 }
 
-// ─── RIDERS ────────────────────────────────────────────────
-function generateCode() {
-  return Math.random().toString(36).substring(2,8).toUpperCase();
-}
+function generateCode() { return Math.random().toString(36).substring(2,8).toUpperCase(); }
 
 async function registerRider() {
   const name = document.getElementById('rider-name-inp').value;
@@ -534,7 +401,6 @@ function renderRidersTable(riders) {
   tbody.innerHTML = list.map(r => `<tr><td>${r.name}</td><td>${r.phone}</td><td>${r.vehicle||'—'}</td><td style="font-family:monospace;color:var(--yellow);font-size:16px;letter-spacing:3px">${r.code}</td><td><span class="status-badge s-accepted">${r.status||'active'}</span></td></tr>`).join('');
 }
 
-// ─── BRANDING ──────────────────────────────────────────────
 async function saveBranding() {
   const data = { name: document.getElementById('brand-name').value, tagline: document.getElementById('brand-tagline').value, phone: document.getElementById('brand-phone').value, address: document.getElementById('brand-address').value };
   if (db) await db.ref('settings/branding').update(data);
@@ -572,9 +438,32 @@ function applyRebranding() {
 function confirmClearOrders() { if(confirm('Clear ALL orders? This cannot be undone.') && db) db.ref('orders').remove().then(()=>showToast('Orders cleared')); }
 function confirmResetSettings() { if(confirm('Reset all settings?') && db) db.ref('settings').remove().then(()=>showToast('Settings reset')); }
 
-// Color sync
 document.getElementById('brand-color')?.addEventListener('input', e => { document.getElementById('brand-color-hex').value = e.target.value; });
 document.getElementById('brand-color-hex')?.addEventListener('input', e => { document.getElementById('brand-color').value = e.target.value; });
+
+const IMGBB_KEY = 'ab7a51eaed988c67582fc8bcc877df5a';
+async function uploadImageToImgBB(targetKey) {
+  const fileInput = document.getElementById(`upload-${targetKey}`);
+  if (!fileInput || !fileInput.files.length) { showToast('Select an image first'); return; }
+  const file = fileInput.files[0];
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('key', IMGBB_KEY);
+  showToast('Uploading...');
+  try {
+    const res = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: formData });
+    const data = await res.json();
+    if (data.success) {
+      const url = data.data.url;
+      if (db) await db.ref('settings/images/' + targetKey).set(url);
+      showToast(`✅ ${targetKey} uploaded!`);
+      const previewDiv = document.getElementById(`${targetKey}-preview`);
+      if (previewDiv) previewDiv.innerHTML = `<img src="${url}" style="max-width:100px; border-radius:8px; margin-top:8px;">`;
+    } else {
+      showToast('Upload failed: ' + (data.error?.message || 'Unknown error'));
+    }
+  } catch(e) { showToast('Upload error'); }
+}
 
 function showToast(msg) {
   let t = document.querySelector('.toast');

@@ -17,14 +17,23 @@ try {
   firebase.initializeApp(firebaseConfig);
   db = firebase.database();
   auth = firebase.auth();
-} catch(e) { console.warn(e); }
+  console.log("Firebase connected");
+} catch(e) { console.warn('Firebase init error:', e.message); }
 
-// Default menu (fallback)
+// ─── DEFAULT MENU (with working image placeholders) ─────────
 const defaultMenuData = [
-  { id:'b1', name:'Grill Burger', cat:'burgers', price:320, emoji:'🍔', desc:'Flame-grilled patty', imageUrl:'https://via.placeholder.com/400x300?text=Grill+Burger' },
-  { id:'b2', name:'Zinger Burger', cat:'burgers', price:350, emoji:'🍔', desc:'Crispy zinger patty', imageUrl:'https://via.placeholder.com/400x300?text=Zinger+Burger' },
-  { id:'w3', name:'Mala Boti Wrap', cat:'wraps', price:450, emoji:'🌯', desc:'Spicy mala boti', imageUrl:'https://via.placeholder.com/400x300?text=Mala+Boti+Wrap' },
-  { id:'d1', name:'Deal 1', cat:'deals', price:600, emoji:'🎁', desc:'2 Zinger Burgers + 2 Colas', includes:['2 Zinger','2 Cola'], imageUrl:'https://via.placeholder.com/400x300?text=Deal+1' },
+  { id:'b1', name:'Grill Burger', cat:'burgers', price:320, emoji:'🍔', desc:'Flame-grilled patty with fresh veggies', imageUrl:'https://picsum.photos/id/106/400/300' },
+  { id:'b2', name:'Zinger Burger', cat:'burgers', price:350, emoji:'🍔', desc:'Crispy zinger patty, special sauce', imageUrl:'https://picsum.photos/id/108/400/300' },
+  { id:'b3', name:'Zinger Twister', cat:'burgers', price:380, emoji:'🌯', desc:'Crispy chicken in tortilla', imageUrl:'https://picsum.photos/id/127/400/300' },
+  { id:'w1', name:'Chicken Bhayari Roll', cat:'wraps', price:300, emoji:'🫔', desc:'Classic chicken bhayari', imageUrl:'https://picsum.photos/id/128/400/300' },
+  { id:'w2', name:'Seekh Kabab Roll', cat:'wraps', price:250, emoji:'🫔', desc:'Juicy seekh kababs', imageUrl:'https://picsum.photos/id/129/400/300' },
+  { id:'w3', name:'Mala Boti Wrap', cat:'wraps', price:450, emoji:'🌯', desc:'Spicy mala boti with fries', imageUrl:'https://picsum.photos/id/130/400/300' },
+  { id:'w4', name:'Zinger Wrap', cat:'wraps', price:350, emoji:'🌯', desc:'Zinger patty wrap', imageUrl:'https://picsum.photos/id/131/400/300' },
+  { id:'s1', name:'Plane Fries', cat:'sides', price:120, emoji:'🍟', desc:'Golden crispy fries', imageUrl:'https://picsum.photos/id/132/400/300' },
+  { id:'s2', name:'Loaded Fries', cat:'sides', price:180, emoji:'🍟', desc:'Cheese & toppings', imageUrl:'https://picsum.photos/id/133/400/300' },
+  { id:'s3', name:'1 Litre Cola', cat:'sides', price:120, emoji:'🥤', desc:'Chilled soft drink', imageUrl:'https://picsum.photos/id/134/400/300' },
+  { id:'d1', name:'Deal 1', cat:'deals', price:600, emoji:'🎁', desc:'2 Zinger Burgers + 2 Colas', includes:['2 Zinger','2 Cola'], imageUrl:'https://picsum.photos/id/135/400/300' },
+  { id:'d2', name:'Deal 2', cat:'deals', price:420, emoji:'🎁', desc:'2 Twisters + Fries', includes:['2 Twisters','Fries'], imageUrl:'https://picsum.photos/id/136/400/300' },
 ];
 
 let menuData = [...defaultMenuData];
@@ -102,10 +111,10 @@ function renderMenu(cat = 'all') {
   if (!grid) return;
   const items = cat === 'all' ? menuData.filter(i => i.cat !== 'deals') : menuData.filter(i => i.cat === cat);
   grid.innerHTML = items.map(item => {
-    const imgHtml = item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}">` : `<div class="emoji-fallback">${item.emoji || '🍔'}</div>`;
+    const imgHtml = item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" onerror="this.style.display='none';this.nextSibling.style.display='flex';">` : '';
     return `
     <div class="menu-card reveal" onclick="openItemModal(${JSON.stringify(item).replace(/"/g,"'")})">
-      <div class="menu-card-img">${imgHtml}</div>
+      <div class="menu-card-img">${imgHtml}<div class="emoji-fallback" style="${imgHtml?'display:none':''}">${item.emoji || '🍔'}</div></div>
       <div class="menu-card-body">
         <div class="menu-card-name">${item.name}</div>
         <div class="menu-card-desc">${item.desc}</div>
@@ -124,11 +133,11 @@ function renderDeals() {
   if (!grid) return;
   const deals = menuData.filter(i => i.cat === 'deals');
   grid.innerHTML = deals.map(deal => {
-    const imgHtml = deal.imageUrl ? `<img src="${deal.imageUrl}" alt="${deal.name}">` : `<div class="emoji-fallback">${deal.emoji || '🎁'}</div>`;
+    const imgHtml = deal.imageUrl ? `<img src="${deal.imageUrl}" alt="${deal.name}" onerror="this.style.display='none';this.nextSibling.style.display='flex';">` : '';
     return `
     <div class="deal-card reveal" onclick="openItemModal(${JSON.stringify(deal).replace(/"/g,"'")})">
       <div class="deal-badge">DEAL</div>
-      <div class="deal-card-img">${imgHtml}</div>
+      <div class="deal-card-img">${imgHtml}<div class="emoji-fallback" style="${imgHtml?'display:none':''}">${deal.emoji || '🎁'}</div></div>
       <div class="deal-card-body">
         <div class="deal-name">${deal.name}</div>
         <div class="deal-includes">${(deal.includes||[]).map(i=>`✦ ${i}`).join('<br/>')}</div>
@@ -266,24 +275,33 @@ function loadCombos() {
   const container = document.getElementById('combos-grid');
   if (!container) return;
   container.innerHTML = `
-    <div class="combo-card"><img id="combo1-img" src="https://via.placeholder.com/400x200?text=Zinger+Combo" alt="Zinger Combo"><h3>Zinger Meal</h3><p>Zinger Burger + Fries + Cola</p><div class="combo-price">Rs. 550</div></div>
-    <div class="combo-card"><img id="combo2-img" src="https://via.placeholder.com/400x200?text=Shawarma+Combo" alt="Shawarma Combo"><h3>Shawarma Feast</h3><p>2 Shawarmas + Fries + Drink</p><div class="combo-price">Rs. 650</div></div>
-    <div class="combo-card"><img id="combo3-img" src="https://via.placeholder.com/400x200?text=Family+Combo" alt="Family Combo"><h3>Family Bucket</h3><p>4 Burgers + 2 Fries + 1.5L Cola</p><div class="combo-price">Rs. 1250</div></div>
+    <div class="combo-card"><img id="combo1-img" src="https://picsum.photos/id/135/400/200" alt="Zinger Combo" onerror="this.style.display='none'"><h3>Zinger Meal</h3><p>Zinger Burger + Fries + Cola</p><div class="combo-price">Rs. 550</div></div>
+    <div class="combo-card"><img id="combo2-img" src="https://picsum.photos/id/136/400/200" alt="Shawarma Combo"><h3>Shawarma Feast</h3><p>2 Shawarmas + Fries + Drink</p><div class="combo-price">Rs. 650</div></div>
+    <div class="combo-card"><img id="combo3-img" src="https://picsum.photos/id/137/400/200" alt="Family Combo"><h3>Family Bucket</h3><p>4 Burgers + 2 Fries + 1.5L Cola</p><div class="combo-price">Rs. 1250</div></div>
   `;
 }
 
-// Load menu from Firebase
+// Load menu from Firebase – FIXED flickering
 function loadMenuFromFirebase() {
-  if (!db) { renderMenu('all'); renderDeals(); return; }
+  if (!db) {
+    renderMenu('all');
+    renderDeals();
+    return;
+  }
+  // First, seed default menu if empty
+  db.ref('menu').once('value', snap => {
+    if (!snap.val()) {
+      const updates = {};
+      defaultMenuData.forEach(item => { updates[`menu/${item.id}`] = item; });
+      db.ref().update(updates).then(() => console.log("Default menu seeded"));
+    }
+  });
+  // Listen for changes
   db.ref('menu').on('value', snap => {
     const fbMenu = snap.val();
     if (fbMenu && Object.keys(fbMenu).length > 0) {
       menuData = Object.values(fbMenu);
     } else {
-      // Seed default menu into Firebase
-      const updates = {};
-      defaultMenuData.forEach(item => { updates[`menu/${item.id}`] = item; });
-      db.ref().update(updates);
       menuData = [...defaultMenuData];
     }
     renderMenu('all');

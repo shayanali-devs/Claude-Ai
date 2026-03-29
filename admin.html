@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Admin — Tempura Potato</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
@@ -50,7 +51,7 @@ body{background:var(--black);}
 .stat-card-sub{font-size:12px;color:var(--gray2);margin-top:4px;}
 
 .orders-table{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);overflow:hidden;}
-.table-header{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;}
+.table-header{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .table-header h3{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);}
 table{width:100%;border-collapse:collapse;}
 th{padding:14px 20px;text-align:left;font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.06);}
@@ -70,7 +71,7 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 .action-btn.decline{border-color:rgba(244,67,54,0.3);color:#F44336;}
 .action-btn.decline:hover{background:rgba(244,67,54,0.1);}
 
-.settings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-bottom:24px;}
+.settings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-bottom:24px;}
 .settings-card{background:var(--black3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:28px;}
 .settings-card h3{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--white);letter-spacing:1px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;}
 .form-row{margin-bottom:16px;}
@@ -102,6 +103,23 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 .alert-btns{display:flex;gap:12px;justify-content:center;}
 .alert-accept{background:#4CAF50;color:#fff;border:none;padding:14px 28px;border-radius:25px;font-weight:700;font-size:15px;cursor:pointer;}
 .alert-decline{background:var(--black4);border:1px solid rgba(244,67,54,0.3);color:#F44336;padding:14px 28px;border-radius:25px;font-weight:700;font-size:15px;cursor:pointer;}
+
+/* Menu Management */
+.menu-editor{background:var(--black3);border-radius:var(--radius);padding:20px;margin-bottom:24px;}
+.menu-item-row{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;}
+.menu-item-row .item-preview{width:50px;height:50px;overflow:hidden;border-radius:10px;background:var(--black4);display:flex;align-items:center;justify-content:center;}
+.menu-item-row .item-preview img{width:100%;height:100%;object-fit:cover;}
+.menu-item-row .item-preview .emoji-preview{font-size:32px;}
+.menu-item-row .item-details{flex:1;display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.menu-item-row .item-name{min-width:140px;font-weight:600;}
+.menu-item-row .item-price{color:var(--yellow);font-family:'Bebas Neue',cursive;font-size:20px;}
+.menu-item-row .item-cat{background:rgba(245,200,66,0.15);padding:2px 10px;border-radius:20px;font-size:12px;}
+.menu-item-actions{display:flex;gap:8px;}
+.menu-item-actions button{background:none;border:1px solid rgba(255,255,255,0.1);color:var(--gray);padding:4px 10px;border-radius:6px;cursor:pointer;}
+.menu-item-actions button:hover{border-color:var(--yellow);color:var(--yellow);}
+.add-item-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px;background:var(--black4);padding:20px;border-radius:var(--radius);}
+.add-item-form input,.add-item-form select{background:var(--black3);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:10px;border-radius:8px;}
+.add-item-form button{background:var(--yellow);color:var(--black);border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -153,6 +171,7 @@ tr:hover td{background:rgba(255,255,255,0.02);}
       <div style="font-size:13px;color:var(--gray)" id="admin-time"></div>
     </div>
 
+    <!-- DASHBOARD -->
     <div class="admin-panel active" id="panel-dashboard">
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-card-label">Today's Orders</div><div class="stat-card-value" id="stat-today">0</div><div class="stat-card-sub">All statuses</div></div>
@@ -160,47 +179,64 @@ tr:hover td{background:rgba(255,255,255,0.02);}
         <div class="stat-card"><div class="stat-card-label">Revenue Today</div><div class="stat-card-value" id="stat-revenue">0</div><div class="stat-card-sub">Rs. delivered orders</div></div>
         <div class="stat-card"><div class="stat-card-label">Active Riders</div><div class="stat-card-value" id="stat-riders">0</div><div class="stat-card-sub">Registered</div></div>
       </div>
-      <div class="orders-table"><div class="table-header"><h3>Recent Orders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="recent-orders-tbody"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:40px;">Loading orders...</td></tr></tbody></table></div></div>
+      <div class="orders-table"><div class="table-header"><h3>Recent Orders</h3></div><div style="overflow-x:auto"></table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="recent-orders-tbody"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:40px;">Loading orders...</td></tr></tbody></table></div></div>
     </div>
 
+    <!-- ORDERS -->
     <div class="admin-panel" id="panel-orders">
-      <div class="orders-table"><div class="table-header"><h3>All Orders</h3><div id="orders-filter" style="display:flex;gap:8px;flex-wrap:wrap"></div></div><div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="all-orders-tbody"></tbody></table></div></div>
+      <div class="orders-table"><div class="table-header"><h3>All Orders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="all-orders-tbody"></tbody></table></div></div>
     </div>
 
+    <!-- MENU MANAGEMENT -->
     <div class="admin-panel" id="panel-menu">
-      <div class="orders-table"><div class="table-header"><h3>Menu Items</h3><button class="save-btn" onclick="exportMenuToFirebase()">Sync to Firebase</button></div><div style="overflow-x:auto"><table><thead><tr><th>Emoji</th><th>Name</th><th>Category</th><th>Price</th><th>Edit Price</th></tr></thead><tbody id="menu-tbody"></tbody></table></div></div>
-    </div>
-
-    <div class="admin-panel" id="panel-riders">
-      <div class="settings-card" style="margin-bottom:24px;"><h3>Register New Rider</h3><div class="form-row"><label>Rider Name</label><input type="text" id="rider-name-inp" placeholder="Full name"/></div><div class="form-row"><label>Phone</label><input type="tel" id="rider-phone-inp" placeholder="+92 3xx xxxxxxx"/></div><div class="form-row"><label>Vehicle</label><input type="text" id="rider-vehicle-inp" placeholder="Honda 125 • ABC-123"/></div><button class="save-btn" onclick="registerRider()">Generate Code & Register</button></div>
-      <div id="new-rider-code" style="display:none;" class="rider-generate-box"><h3 style="font-family:'Bebas Neue',cursive;font-size:20px;color:var(--white);">Rider Code Generated!</h3><div class="rider-code-display" id="rider-code-display">—</div><p style="font-size:13px;color:var(--gray);text-align:center;">Share this code with the rider. They'll use it to log into the Rider App.</p></div>
-      <div class="riders-list"><div class="table-header"><h3>Registered Riders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Code</th><th>Status</th></tr></thead><tbody id="riders-tbody"><tr><td colspan="5" style="text-align:center;color:var(--gray);padding:40px;">No riders registered yet</td></tr></tbody></table></div></div>
-    </div>
-
-    <div class="admin-panel" id="panel-branding">
-      <div class="settings-grid">
-        <div class="settings-card"><h3>Brand Identity</h3><div class="form-row"><label>Restaurant Name</label><input type="text" id="brand-name" value="Tempura Potato"/></div><div class="form-row"><label>Tagline</label><input type="text" id="brand-tagline" value="Lahore's Finest"/></div><div class="form-row"><label>Phone</label><input type="text" id="brand-phone" value="+92-3044888775"/></div><div class="form-row"><label>Address</label><input type="text" id="brand-address" value="Main Bazar Nishat Colony, Milad Chock, Lahore"/></div><button class="save-btn" onclick="saveBranding()">Save Branding</button></div>
-        <div class="settings-card"><h3>Colours</h3><div class="form-row"><label>Accent Color (Yellow)</label><div class="color-preview"><input type="color" id="brand-color" value="#f5c842"/><input type="text" id="brand-color-hex" value="#f5c842" style="flex:1"/></div></div><div class="form-row"><label>Background Color</label><input type="color" id="brand-bg" value="#0a0a0a"/></div><button class="save-btn" onclick="saveColors()">Apply Colors</button></div>
-        <div class="settings-card"><h3>WhatsApp Order Number</h3><div class="form-row"><label>WhatsApp Number (with country code)</label><input type="tel" id="wa-number" placeholder="923044888775"/></div><div class="form-row"><label>Delivery Fee (Rs.)</label><input type="number" id="delivery-fee-inp" value="60"/></div><div class="form-row"><label>Min. Order Amount (Rs.)</label><input type="number" id="min-order-inp" value="0"/></div><button class="save-btn" onclick="saveSettings()">Save Settings</button></div>
-        <div class="settings-card"><h3>Banner / Announcement</h3><div class="form-row"><label>Top Banner Text</label><input type="text" id="banner-text" value="Install the app & get 20% off your first order!"/></div><div class="form-row"><label>Hero Headline</label><input type="text" id="hero-headline" value="TASTE THE OBSESSION"/></div><div class="form-row"><label>Hero Subtext</label><textarea id="hero-sub" rows="3">Premium burgers. Legendary wraps. Deals that hit different.</textarea></div><button class="save-btn" onclick="saveBanner()">Save Banner</button></div>
+      <div class="orders-table">
+        <div class="table-header"><h3>Menu Items (Real Images)</h3><button class="save-btn" onclick="syncMenuToFirebase()">Sync Default Menu</button></div>
+        <div id="menu-editor-container"></div>
+        <div class="add-item-form" id="add-item-form">
+          <input type="text" id="new-item-name" placeholder="Item Name">
+          <input type="text" id="new-item-price" placeholder="Price (Rs.)">
+          <select id="new-item-cat"><option value="burgers">Burger</option><option value="wraps">Wrap</option><option value="sides">Side</option><option value="deals">Deal</option></select>
+          <input type="text" id="new-item-emoji" placeholder="Emoji (e.g. 🍔)">
+          <input type="text" id="new-item-desc" placeholder="Description">
+          <input type="text" id="new-item-image" placeholder="Image URL (direct link)">
+          <button onclick="addMenuItem()">+ Add Item</button>
+        </div>
       </div>
     </div>
 
+    <!-- RIDERS -->
+    <div class="admin-panel" id="panel-riders">
+      <div class="settings-card"><h3>Register New Rider</h3><div class="form-row"><label>Rider Name</label><input type="text" id="rider-name-inp"/></div><div class="form-row"><label>Phone</label><input type="tel" id="rider-phone-inp"/></div><div class="form-row"><label>Vehicle</label><input type="text" id="rider-vehicle-inp"/></div><button class="save-btn" onclick="registerRider()">Generate Code & Register</button></div>
+      <div id="new-rider-code" style="display:none;" class="rider-generate-box"><h3>Rider Code Generated!</h3><div class="rider-code-display" id="rider-code-display">—</div><p>Share this code with the rider.</p></div>
+      <div class="riders-list"><div class="table-header"><h3>Registered Riders</h3></div><div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Code</th><th>Status</th></tr></thead><tbody id="riders-tbody"><tr><td colspan="5">No riders yet</td></tr></tbody></table></div></div>
+    </div>
+
+    <!-- BRANDING -->
+    <div class="admin-panel" id="panel-branding">
+      <div class="settings-grid">
+        <div class="settings-card"><h3>Brand Identity</h3><div class="form-row"><label>Restaurant Name</label><input type="text" id="brand-name" value="Tempura Potato"/></div><div class="form-row"><label>Tagline</label><input type="text" id="brand-tagline" value="Lahore's Finest"/></div><div class="form-row"><label>Phone</label><input type="text" id="brand-phone" value="+92-3044888775"/></div><div class="form-row"><label>Address</label><input type="text" id="brand-address" value="Main Bazar Nishat Colony, Milad Chock, Lahore"/></div><button class="save-btn" onclick="saveBranding()">Save Branding</button></div>
+        <div class="settings-card"><h3>Colours</h3><div class="form-row"><label>Accent Color</label><div class="color-preview"><input type="color" id="brand-color" value="#f5c842"/><input type="text" id="brand-color-hex" value="#f5c842" style="flex:1"/></div></div><button class="save-btn" onclick="saveColors()">Apply Colors</button></div>
+        <div class="settings-card"><h3>Content</h3><div class="form-row"><label>Hero Headline</label><input type="text" id="hero-headline" value="TASTE THE OBSESSION"/></div><div class="form-row"><label>Hero Subtext</label><textarea id="hero-sub">Premium burgers. Legendary wraps. Deals that hit different.</textarea></div><div class="form-row"><label>Hero Badge</label><input type="text" id="hero-badge" value="🔥 Lahore's Fastest Growing Restaurant"/></div><button class="save-btn" onclick="saveContent()">Save Content</button></div>
+      </div>
+    </div>
+
+    <!-- DEV SETTINGS -->
     <div class="admin-panel" id="panel-devsettings">
-      <div id="dev-locked"><div class="dev-lock"><div class="dev-lock-icon">🔐</div><h2>Developer Settings</h2><p>This area is restricted. Enter the developer password to continue.</p><input class="login-input" type="password" id="dev-pass" placeholder="Developer password" style="max-width:300px;margin:0 auto 16px;" onkeydown="if(event.key==='Enter')loginDev()"/><br/><button class="btn-primary" onclick="loginDev()">Unlock →</button><div class="login-error" id="dev-error">Wrong password.</div></div></div>
+      <div id="dev-locked"><div class="dev-lock"><div class="dev-lock-icon">🔐</div><h2>Developer Settings</h2><p>Enter developer password to continue.</p><input class="login-input" type="password" id="dev-pass" style="max-width:300px;margin:0 auto 16px;" onkeydown="if(event.key==='Enter')loginDev()"/><br/><button class="btn-primary" onclick="loginDev()">Unlock →</button><div class="login-error" id="dev-error">Wrong password.</div></div></div>
       <div id="dev-unlocked" style="display:none;">
         <div class="settings-grid">
-          <div class="settings-card"><h3>🖼️ Image Manager (ImgBB)</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Upload hero image and gallery images. They will appear on the homepage instantly.</p>
-            <div class="form-row"><label>Hero Image (Main banner)</label><input type="file" id="upload-hero" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('hero')">Upload Hero</button><div id="hero-preview" style="margin-top:8px;"></div></div>
-            <div class="form-row"><label>Gallery Image 1 (Zinger)</label><input type="file" id="upload-gallery1" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery1')">Upload</button></div>
-            <div class="form-row"><label>Gallery Image 2 (Shawarma)</label><input type="file" id="upload-gallery2" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery2')">Upload</button></div>
-            <div class="form-row"><label>Gallery Image 3 (Grill Burger)</label><input type="file" id="upload-gallery3" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery3')">Upload</button></div>
-            <div class="form-row"><label>Gallery Image 4 (Mala Boti)</label><input type="file" id="upload-gallery4" accept="image/*"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('gallery4')">Upload</button></div>
+          <div class="settings-card"><h3>🖼️ Image Manager (ImgBB)</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Upload images or enter direct image URL.</p>
+            <div class="form-row"><label>Hero Image</label><input type="file" id="upload-hero" accept="image/*"><input type="text" id="hero-url" placeholder="Or paste image URL" style="margin-top:8px;"><button class="save-btn" style="margin-top:8px;" onclick="uploadImageToImgBB('hero')">Upload File</button><button class="save-btn" style="margin-top:8px;" onclick="setImageUrl('hero')">Use URL</button></div>
+            <div class="form-row"><label>Gallery 1 (Zinger)</label><input type="file" id="upload-gallery1"><input type="text" id="gallery1-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('gallery1')">Upload</button><button onclick="setImageUrl('gallery1')">Use URL</button></div>
+            <div class="form-row"><label>Gallery 2 (Shawarma)</label><input type="file" id="upload-gallery2"><input type="text" id="gallery2-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('gallery2')">Upload</button><button onclick="setImageUrl('gallery2')">Use URL</button></div>
+            <div class="form-row"><label>Gallery 3 (Grill)</label><input type="file" id="upload-gallery3"><input type="text" id="gallery3-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('gallery3')">Upload</button><button onclick="setImageUrl('gallery3')">Use URL</button></div>
+            <div class="form-row"><label>Gallery 4 (Mala Boti)</label><input type="file" id="upload-gallery4"><input type="text" id="gallery4-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('gallery4')">Upload</button><button onclick="setImageUrl('gallery4')">Use URL</button></div>
+            <div class="form-row"><label>Combo 1</label><input type="file" id="upload-combo1"><input type="text" id="combo1-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('combo1')">Upload</button><button onclick="setImageUrl('combo1')">Use URL</button></div>
+            <div class="form-row"><label>Combo 2</label><input type="file" id="upload-combo2"><input type="text" id="combo2-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('combo2')">Upload</button><button onclick="setImageUrl('combo2')">Use URL</button></div>
+            <div class="form-row"><label>Combo 3</label><input type="file" id="upload-combo3"><input type="text" id="combo3-url" placeholder="Image URL"><button onclick="uploadImageToImgBB('combo3')">Upload</button><button onclick="setImageUrl('combo3')">Use URL</button></div>
           </div>
-          <div class="settings-card"><h3>Admin Password</h3><div class="form-row"><label>New Admin Password</label><input type="password" id="new-admin-pass" placeholder="New password"/></div><div class="form-row"><label>Developer Password</label><input type="password" id="new-dev-pass" placeholder="New dev password"/></div><button class="save-btn" onclick="savePasswords()">Update Passwords</button></div>
-          <div class="settings-card"><h3>Firebase Config</h3><div class="form-row"><label>Database URL</label><input type="text" id="fb-url" value="https://tempura-potato-deep-default-rtdb.firebaseio.com"/></div><div class="form-row"><label>Project ID</label><input type="text" id="fb-project" value="tempura-potato-deep"/></div><button class="save-btn" onclick="saveFirebase()">Save Config</button></div>
-          <div class="settings-card"><h3>Full Rebranding Tool</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">Change every visible element of the website from here.</p><div class="form-row"><label>Logo Emoji</label><input type="text" id="rebrand-logo" value="🥔"/></div><div class="form-row"><label>Primary Font</label><select id="rebrand-font"><option>Bebas Neue</option><option>Oswald</option><option>Barlow Condensed</option></select></div><div class="form-row"><label>Hero Background Style</label><select id="rebrand-bg"><option value="grid">Grid Pattern</option><option value="solid">Solid Dark</option><option value="gradient">Gradient</option></select></div><button class="save-btn" onclick="applyRebranding()">Apply Rebranding</button></div>
-          <div class="settings-card" style="border-color:rgba(244,67,54,0.3);"><h3 style="color:#F44336;">Danger Zone</h3><p style="font-size:13px;color:var(--gray);margin-bottom:16px;">These actions are irreversible.</p><button style="background:#F44336;color:#fff;border:none;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;margin-bottom:10px;width:100%;" onclick="confirmClearOrders()">Clear All Orders</button><button style="background:transparent;border:1px solid rgba(244,67,54,0.3);color:#F44336;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer;width:100%;" onclick="confirmResetSettings()">Reset All Settings</button></div>
+          <div class="settings-card"><h3>Admin Passwords</h3><div class="form-row"><label>New Admin Password</label><input type="password" id="new-admin-pass"/></div><div class="form-row"><label>New Dev Password</label><input type="password" id="new-dev-pass"/></div><button class="save-btn" onclick="savePasswords()">Update Passwords</button></div>
+          <div class="settings-card"><h3>Danger Zone</h3><button style="background:#F44336;color:#fff;border:none;padding:12px;border-radius:25px;width:100%;margin-bottom:10px;" onclick="confirmClearOrders()">Clear All Orders</button><button style="background:transparent;border:1px solid rgba(244,67,54,0.3);color:#F44336;padding:12px;border-radius:25px;width:100%;" onclick="confirmResetSettings()">Reset All Settings</button></div>
         </div>
       </div>
     </div>
@@ -208,267 +244,233 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 </div>
 
 <div class="toast"></div>
-<audio id="alert-audio" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA..." preload="auto"></audio>
-
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <script src="app.js"></script>
 <script>
+const IMGBB_KEY = 'ab7a51eaed988c67582fc8bcc877df5a';
+let db = window.TP?.db;
+
 function getAdminPass(){ return localStorage.getItem('tp_admin_pass') || 'admin123'; }
 function getDevPass(){ return localStorage.getItem('tp_dev_pass') || 'devpass2026'; }
 
 function loginAdmin() {
-  const pass = document.getElementById('admin-pass').value;
-  if (pass === getAdminPass()) {
-    document.getElementById('admin-login').style.display = 'none';
-    document.getElementById('admin-app').style.display = 'flex';
+  if(document.getElementById('admin-pass').value === getAdminPass()){
+    document.getElementById('admin-login').style.display='none';
+    document.getElementById('admin-app').style.display='flex';
     localStorage.setItem('tp_admin_session','1');
     initAdmin();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-  }
+  } else document.getElementById('login-error').style.display='block';
 }
+function logoutAdmin(){ localStorage.removeItem('tp_admin_session'); location.reload(); }
+if(localStorage.getItem('tp_admin_session')){ document.getElementById('admin-login').style.display='none'; document.getElementById('admin-app').style.display='flex'; initAdmin(); }
 
-function logoutAdmin() {
-  localStorage.removeItem('tp_admin_session');
-  location.reload();
-}
-
-if (localStorage.getItem('tp_admin_session')) {
-  document.getElementById('admin-login').style.display='none';
-  document.getElementById('admin-app').style.display='flex';
-  initAdmin();
-}
-
-function loginDev() {
-  const pass = document.getElementById('dev-pass').value;
-  if (pass === getDevPass()) {
+function loginDev(){
+  if(document.getElementById('dev-pass').value === getDevPass()){
     document.getElementById('dev-locked').style.display='none';
     document.getElementById('dev-unlocked').style.display='block';
-  } else {
-    document.getElementById('dev-error').style.display='block';
-  }
+  } else document.getElementById('dev-error').style.display='block';
 }
 
-function showPanel(name) {
-  const panelTitles = {dashboard:'Dash<span style="color:var(--yellow)">board</span>',orders:'All <span style="color:var(--yellow)">Orders</span>',menu:'Menu <span style="color:var(--yellow)">Items</span>',riders:'Rider <span style="color:var(--yellow)">Management</span>',branding:'Brand<span style="color:var(--yellow)">ing</span>',devsettings:'Dev <span style="color:var(--yellow)">Settings</span>'};
-  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('panel-' + name)?.classList.add('active');
-  document.querySelectorAll('.admin-nav-item').forEach(n => { if(n.textContent.toLowerCase().includes(name.substring(0,4))) n.classList.add('active'); });
-  document.getElementById('panel-title').innerHTML = panelTitles[name] || name;
+function showPanel(name){
+  const titles={dashboard:'Dash<span style="color:var(--yellow)">board</span>',orders:'All <span style="color:var(--yellow)">Orders</span>',menu:'Menu <span style="color:var(--yellow)">Management</span>',riders:'Rider <span style="color:var(--yellow)">Management</span>',branding:'Brand<span style="color:var(--yellow)">ing</span>',devsettings:'Dev <span style="color:var(--yellow)">Settings</span>'};
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.admin-nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('panel-'+name)?.classList.add('active');
+  document.querySelectorAll('.admin-nav-item').forEach(n=>{if(n.textContent.toLowerCase().includes(name.substring(0,4))) n.classList.add('active');});
+  document.getElementById('panel-title').innerHTML=titles[name]||name;
   document.getElementById('admin-sidebar').classList.remove('open');
 }
 
-let allOrders = {};
-let alertOrderId = null;
-
-function initAdmin() {
-  updateClock();
-  setInterval(updateClock, 1000);
-  renderMenuTable();
-  if (!db) return;
-  db.ref('orders').on('value', snap => {
-    allOrders = snap.val() || {};
-    renderDashboard();
-    renderOrdersTable();
-    checkNewOrders();
-  });
-  db.ref('riders').on('value', snap => {
-    renderRidersTable(snap.val() || {});
-    document.getElementById('stat-riders').textContent = Object.keys(snap.val()||{}).length;
-  });
+let allOrders={}, alertOrderId=null;
+function initAdmin(){
+  updateClock(); setInterval(updateClock,1000);
+  loadMenuEditor();
+  if(!db) return;
+  db.ref('orders').on('value',snap=>{ allOrders=snap.val()||{}; renderDashboard(); renderOrdersTable(); checkNewOrders(); });
+  db.ref('riders').on('value',snap=>{ renderRidersTable(snap.val()||{}); document.getElementById('stat-riders').textContent=Object.keys(snap.val()||{}).length; });
 }
-
-function updateClock() {
-  const now = new Date();
-  document.getElementById('admin-time').textContent = now.toLocaleString('en-PK',{dateStyle:'medium',timeStyle:'short'});
-}
-
-function renderDashboard() {
-  const today = new Date().toDateString();
-  const orders = Object.values(allOrders);
-  const todayOrders = orders.filter(o => new Date(o.timestamp).toDateString() === today);
-  const pending = orders.filter(o => o.status === 'pending');
-  const revenue = todayOrders.filter(o=>o.status==='delivered').reduce((s,o)=>s+o.total,0);
-  document.getElementById('stat-today').textContent = todayOrders.length;
-  document.getElementById('stat-pending').textContent = pending.length;
-  document.getElementById('stat-revenue').textContent = revenue;
-  if (pending.length) document.getElementById('pending-badge').textContent = pending.length;
-  else document.getElementById('pending-badge').textContent = '';
+function updateClock(){ document.getElementById('admin-time').textContent=new Date().toLocaleString('en-PK',{dateStyle:'medium',timeStyle:'short'}); }
+function renderDashboard(){
+  const today=new Date().toDateString(), orders=Object.values(allOrders);
+  const todayOrders=orders.filter(o=>new Date(o.timestamp).toDateString()===today);
+  const pending=orders.filter(o=>o.status==='pending');
+  const revenue=todayOrders.filter(o=>o.status==='delivered').reduce((s,o)=>s+o.total,0);
+  document.getElementById('stat-today').textContent=todayOrders.length;
+  document.getElementById('stat-pending').textContent=pending.length;
+  document.getElementById('stat-revenue').textContent=revenue;
+  document.getElementById('pending-badge').textContent=pending.length||'';
   renderOrderRows(document.getElementById('recent-orders-tbody'), orders.slice(-10).reverse(), false);
 }
-
-function renderOrdersTable() {
-  renderOrderRows(document.getElementById('all-orders-tbody'), Object.values(allOrders).reverse(), true);
+function renderOrdersTable(){ renderOrderRows(document.getElementById('all-orders-tbody'), Object.values(allOrders).reverse(), true); }
+function renderOrderRows(tbody,orders,full){
+  if(!orders.length){ tbody.innerHTML='<tr><td colspan="7">No orders yet</td></tr>'; return; }
+  tbody.innerHTML=orders.map(o=>`<tr><td>#${o.id?.slice(-6)||'—'}</td><td>${o.customer?.name||'—'}</td>${full?`<td>${o.customer?.phone||'—'}</td><td>${o.deliveryType||'—'}</td>`:''}<td>${(o.items||[]).map(i=>i.name).join(', ')}</td><td>Rs.${o.total||0}</td><td><span class="status-badge s-${o.status||'pending'}">${o.status||'pending'}</span></td><td>${o.status==='pending'?`<button class="action-btn accept" onclick="updateOrderStatus('${o.id}','accepted')">Accept</button><button class="action-btn decline" onclick="updateOrderStatus('${o.id}','declined')">Decline</button>`:o.status==='accepted'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','preparing')">Preparing</button>`:o.status==='preparing'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','onway')">On Way</button>`:o.status==='onway'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','delivered')">Delivered</button>`:''}</td></tr>`).join('');
 }
-
-function renderOrderRows(tbody, orders, full) {
-  if (!orders.length) { tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;color:var(--gray);padding:40px;">No orders yet</td></tr>`; return; }
-  tbody.innerHTML = orders.map(o => `
-    <tr>
-      <td style="font-size:12px;font-family:monospace;color:var(--gray)">#${o.id?.slice(-6)||'—'}</td>
-      <td>${o.customer?.name||'—'}</td>
-      ${full?`<td>${o.customer?.phone||'—'}</td><td>${o.deliveryType||'—'}</td>`:''}
-      <td><div style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${(o.items||[]).map(i=>i.name).join(', ')}</div></td>
-      <td style="font-family:'Bebas Neue',cursive;font-size:18px;color:var(--yellow)">Rs.${o.total||0}</td>
-      <td><span class="status-badge s-${o.status||'pending'}">${o.status||'pending'}</span></td>
-      <td style="display:flex;gap:6px;flex-wrap:wrap;">
-        ${o.status==='pending'?`<button class="action-btn accept" onclick="updateOrderStatus('${o.id}','accepted')">Accept</button><button class="action-btn decline" onclick="updateOrderStatus('${o.id}','declined')">Decline</button>`:''}
-        ${o.status==='accepted'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','preparing')">Preparing</button>`:''}
-        ${o.status==='preparing'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','onway')">On Way</button>`:''}
-        ${o.status==='onway'?`<button class="action-btn" onclick="updateOrderStatus('${o.id}','delivered')">Delivered</button>`:''}
-      </td>
-    </tr>
-  `).join('');
-}
-
-async function updateOrderStatus(id, status) {
-  if (!db) return;
+async function updateOrderStatus(id,status){
+  if(!db) return;
   await db.ref('orders/'+id+'/status').set(status);
   await db.ref('orders/'+id+'/statusUpdates/'+status).set(Date.now());
   showToast(`Order ${id.slice(-6)} → ${status}`);
-  if (alertOrderId === id) document.getElementById('order-alert').classList.remove('show');
+  if(alertOrderId===id) document.getElementById('order-alert').classList.remove('show');
 }
-
-let knownOrderIds = new Set();
-function checkNewOrders() {
-  Object.entries(allOrders).forEach(([id, order]) => {
-    if (order.status === 'pending' && !knownOrderIds.has(id)) {
+let knownOrderIds=new Set();
+function checkNewOrders(){
+  Object.entries(allOrders).forEach(([id,order])=>{
+    if(order.status==='pending' && !knownOrderIds.has(id)){
       knownOrderIds.add(id);
-      if (knownOrderIds.size > 1) triggerOrderAlert(id, order);
+      if(knownOrderIds.size>1) triggerOrderAlert(id,order);
     }
   });
-  if (knownOrderIds.size === 0) Object.keys(allOrders).forEach(id => knownOrderIds.add(id));
+  if(knownOrderIds.size===0) Object.keys(allOrders).forEach(id=>knownOrderIds.add(id));
 }
-
-function triggerOrderAlert(id, order) {
-  alertOrderId = id;
-  document.getElementById('alert-order-summary').textContent = `${order.customer?.name||'Customer'} ordered ${(order.items||[]).length} item(s) — Rs. ${order.total}`;
+function triggerOrderAlert(id,order){
+  alertOrderId=id;
+  document.getElementById('alert-order-summary').textContent=`${order.customer?.name||'Customer'} ordered ${(order.items||[]).length} item(s) — Rs. ${order.total}`;
   document.getElementById('order-alert').classList.add('show');
-  try { new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAA==').play(); } catch(e) {}
+  try{ new Audio().play(); }catch(e){}
+}
+window.respondOrder=function(status){ if(alertOrderId) updateOrderStatus(alertOrderId,status); };
+
+// Menu Editor
+async function loadMenuEditor(){
+  if(!db) return;
+  db.ref('menu').on('value',snap=>{
+    const items=snap.val()||{};
+    const container=document.getElementById('menu-editor-container');
+    if(!container) return;
+    container.innerHTML=Object.values(items).map(item=>`
+      <div class="menu-item-row" data-id="${item.id}">
+        <div class="item-preview">${item.imageUrl?`<img src="${item.imageUrl}">`:`<div class="emoji-preview">${item.emoji||'🍔'}</div>`}</div>
+        <div class="item-details">
+          <span class="item-name">${item.name}</span>
+          <span class="item-price">Rs.${item.price}</span>
+          <span class="item-cat">${item.cat}</span>
+        </div>
+        <div class="menu-item-actions">
+          <button onclick="editMenuItem('${item.id}')">✏️ Edit</button>
+          <button onclick="deleteMenuItem('${item.id}')">🗑️ Delete</button>
+        </div>
+      </div>
+    `).join('');
+    if(!Object.keys(items).length) container.innerHTML='<p style="padding:20px;text-align:center;">No menu items. Add some below.</p>';
+  });
+}
+async function deleteMenuItem(id){
+  if(confirm('Delete this item?')) await db.ref('menu/'+id).remove();
+}
+function editMenuItem(id){
+  const newName=prompt('New name:');
+  const newPrice=prompt('New price:');
+  const newImage=prompt('Image URL:');
+  if(newName) db.ref(`menu/${id}/name`).set(newName);
+  if(newPrice) db.ref(`menu/${id}/price`).set(Number(newPrice));
+  if(newImage) db.ref(`menu/${id}/imageUrl`).set(newImage);
+}
+async function addMenuItem(){
+  const name=document.getElementById('new-item-name').value;
+  const price=document.getElementById('new-item-price').value;
+  const cat=document.getElementById('new-item-cat').value;
+  const emoji=document.getElementById('new-item-emoji').value||'🍔';
+  const desc=document.getElementById('new-item-desc').value;
+  const imageUrl=document.getElementById('new-item-image').value;
+  if(!name||!price){ showToast('Name and price required'); return; }
+  const id=Date.now().toString();
+  const newItem={id,name,cat,price:Number(price),emoji,desc,imageUrl};
+  await db.ref('menu/'+id).set(newItem);
+  document.getElementById('new-item-name').value='';
+  document.getElementById('new-item-price').value='';
+  document.getElementById('new-item-emoji').value='';
+  document.getElementById('new-item-desc').value='';
+  document.getElementById('new-item-image').value='';
+  showToast('Item added!');
+}
+function syncMenuToFirebase(){
+  if(!db) return;
+  const defaultMenu=[{id:'b1',name:'Grill Burger',cat:'burgers',price:320,emoji:'🍔',desc:'Flame-grilled patty',imageUrl:'https://via.placeholder.com/400x300?text=Grill+Burger'}];
+  defaultMenu.forEach(item=>db.ref('menu/'+item.id).set(item));
+  showToast('Default menu synced');
 }
 
-window.respondOrder = function(status) {
-  if (alertOrderId) updateOrderStatus(alertOrderId, status);
-};
-
-function renderMenuTable() {
-  const tbody = document.getElementById('menu-tbody');
-  const data = window.TP?.menuData || [];
-  tbody.innerHTML = data.map(item => `
-    <tr>
-      <td style="font-size:24px">${item.emoji}</td>
-      <td>${item.name}</td>
-      <td><span class="status-badge" style="background:rgba(245,200,66,0.1);color:var(--yellow)">${item.cat}</span></td>
-      <td style="font-family:'Bebas Neue',cursive;font-size:18px;color:var(--yellow)">Rs.${item.price}</td>
-      <td><input type="number" value="${item.price}" style="background:var(--black4);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:6px 10px;border-radius:6px;width:100px;font-size:14px;" onchange="updateItemPrice('${item.id}',this.value)"/></td>
-    </tr>
-  `).join('');
+// Riders
+async function registerRider(){
+  const name=document.getElementById('rider-name-inp').value;
+  const phone=document.getElementById('rider-phone-inp').value;
+  const vehicle=document.getElementById('rider-vehicle-inp').value;
+  if(!name||!phone){ showToast('Fill name & phone'); return; }
+  const code=Math.random().toString(36).substring(2,8).toUpperCase();
+  const rider={name,phone,vehicle,code,status:'active',timestamp:Date.now()};
+  if(db) await db.ref('riders/'+code).set(rider);
+  document.getElementById('rider-code-display').textContent=code;
+  document.getElementById('new-rider-code').style.display='block';
+}
+function renderRidersTable(riders){
+  const tbody=document.getElementById('riders-tbody');
+  const list=Object.values(riders);
+  if(!list.length){ tbody.innerHTML='<tr><td colspan="5">No riders yet</td></tr>'; return; }
+  tbody.innerHTML=list.map(r=>`<tr><td>${r.name}</td><td>${r.phone}</td><td>${r.vehicle||'—'}</td><td style="letter-spacing:3px">${r.code}</td><td><span class="status-badge s-accepted">${r.status||'active'}</span></td></tr>`).join('');
 }
 
-function updateItemPrice(id, price) {
-  if (db) db.ref('menu/'+id+'/price').set(Number(price));
-  showToast('Price updated!');
-}
-
-function exportMenuToFirebase() {
-  if (!db) return;
-  const data = window.TP?.menuData || [];
-  const updates = {};
-  data.forEach(item => { updates['menu/'+item.id] = item; });
-  db.ref().update(updates).then(() => showToast('Menu synced to Firebase ✅'));
-}
-
-function generateCode() { return Math.random().toString(36).substring(2,8).toUpperCase(); }
-
-async function registerRider() {
-  const name = document.getElementById('rider-name-inp').value;
-  const phone = document.getElementById('rider-phone-inp').value;
-  const vehicle = document.getElementById('rider-vehicle-inp').value;
-  if (!name || !phone) { showToast('Fill in rider name & phone'); return; }
-  const code = generateCode();
-  const rider = { name, phone, vehicle, code, status: 'active', timestamp: Date.now() };
-  if (db) await db.ref('riders/'+code).set(rider);
-  document.getElementById('rider-code-display').textContent = code;
-  document.getElementById('new-rider-code').style.display = 'block';
-}
-
-function renderRidersTable(riders) {
-  const tbody = document.getElementById('riders-tbody');
-  const list = Object.values(riders);
-  if (!list.length) { tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--gray);padding:30px;">No riders yet</td></tr>'; return; }
-  tbody.innerHTML = list.map(r => `<tr><td>${r.name}</td><td>${r.phone}</td><td>${r.vehicle||'—'}</td><td style="font-family:monospace;color:var(--yellow);font-size:16px;letter-spacing:3px">${r.code}</td><td><span class="status-badge s-accepted">${r.status||'active'}</span></td></tr>`).join('');
-}
-
-async function saveBranding() {
-  const data = { name: document.getElementById('brand-name').value, tagline: document.getElementById('brand-tagline').value, phone: document.getElementById('brand-phone').value, address: document.getElementById('brand-address').value };
-  if (db) await db.ref('settings/branding').update(data);
+// Branding & Content
+async function saveBranding(){
+  const data={name:document.getElementById('brand-name').value,tagline:document.getElementById('brand-tagline').value,phone:document.getElementById('brand-phone').value,address:document.getElementById('brand-address').value};
+  if(db) await db.ref('settings/branding').update(data);
   showToast('Branding saved ✅');
 }
-async function saveColors() {
-  const color = document.getElementById('brand-color').value;
-  document.documentElement.style.setProperty('--yellow', color);
-  if (db) await db.ref('settings/branding/accentColor').set(color);
-  showToast('Colors applied ✅');
+async function saveColors(){
+  const color=document.getElementById('brand-color').value;
+  document.documentElement.style.setProperty('--yellow',color);
+  if(db) await db.ref('settings/branding/accentColor').set(color);
+  showToast('Color applied ✅');
 }
-async function saveSettings() {
-  const data = { waNumber: document.getElementById('wa-number').value, deliveryFee: document.getElementById('delivery-fee-inp').value, minOrder: document.getElementById('min-order-inp').value };
-  if (db) await db.ref('settings').update(data);
-  showToast('Settings saved ✅');
+async function saveContent(){
+  const data={heroHeadline:document.getElementById('hero-headline').value,heroSub:document.getElementById('hero-sub').value,heroBadge:document.getElementById('hero-badge').value};
+  if(db) await db.ref('settings/content').update(data);
+  showToast('Content saved ✅');
 }
-async function saveBanner() {
-  const data = { bannerText: document.getElementById('banner-text').value, heroHeadline: document.getElementById('hero-headline').value, heroSub: document.getElementById('hero-sub').value };
-  if (db) await db.ref('settings/content').update(data);
-  showToast('Banner saved ✅');
-}
-function savePasswords() {
-  const ap = document.getElementById('new-admin-pass').value;
-  const dp = document.getElementById('new-dev-pass').value;
-  if (ap) localStorage.setItem('tp_admin_pass', ap);
-  if (dp) localStorage.setItem('tp_dev_pass', dp);
+function savePasswords(){
+  const ap=document.getElementById('new-admin-pass').value;
+  const dp=document.getElementById('new-dev-pass').value;
+  if(ap) localStorage.setItem('tp_admin_pass',ap);
+  if(dp) localStorage.setItem('tp_dev_pass',dp);
   showToast('Passwords updated ✅');
 }
-function saveFirebase() { showToast('Firebase config saved ✅'); }
-function applyRebranding() {
-  const logo = document.getElementById('rebrand-logo').value;
-  if (logo) document.querySelectorAll('.nav-logo-icon,.footer-logo-icon').forEach(el => el.textContent = logo);
-  showToast('Rebranding applied ✅');
-}
-function confirmClearOrders() { if(confirm('Clear ALL orders? This cannot be undone.') && db) db.ref('orders').remove().then(()=>showToast('Orders cleared')); }
-function confirmResetSettings() { if(confirm('Reset all settings?') && db) db.ref('settings').remove().then(()=>showToast('Settings reset')); }
+function confirmClearOrders(){ if(confirm('Clear all orders?') && db) db.ref('orders').remove().then(()=>showToast('Orders cleared')); }
+function confirmResetSettings(){ if(confirm('Reset settings?') && db) db.ref('settings').remove().then(()=>showToast('Settings reset')); }
 
-document.getElementById('brand-color')?.addEventListener('input', e => { document.getElementById('brand-color-hex').value = e.target.value; });
-document.getElementById('brand-color-hex')?.addEventListener('input', e => { document.getElementById('brand-color').value = e.target.value; });
-
-const IMGBB_KEY = 'ab7a51eaed988c67582fc8bcc877df5a';
-async function uploadImageToImgBB(targetKey) {
-  const fileInput = document.getElementById(`upload-${targetKey}`);
-  if (!fileInput || !fileInput.files.length) { showToast('Select an image first'); return; }
-  const file = fileInput.files[0];
-  const formData = new FormData();
-  formData.append('image', file);
-  formData.append('key', IMGBB_KEY);
+// Image Upload
+async function uploadImageToImgBB(target){
+  const fileInput=document.getElementById(`upload-${target}`);
+  if(!fileInput.files.length){ showToast('Select a file first'); return; }
+  const formData=new FormData();
+  formData.append('image',fileInput.files[0]);
+  formData.append('key',IMGBB_KEY);
   showToast('Uploading...');
-  try {
-    const res = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: formData });
-    const data = await res.json();
-    if (data.success) {
-      const url = data.data.url;
-      if (db) await db.ref('settings/images/' + targetKey).set(url);
-      showToast(`✅ ${targetKey} uploaded!`);
-      const previewDiv = document.getElementById(`${targetKey}-preview`);
-      if (previewDiv) previewDiv.innerHTML = `<img src="${url}" style="max-width:100px; border-radius:8px; margin-top:8px;">`;
-    } else {
-      showToast('Upload failed: ' + (data.error?.message || 'Unknown error'));
-    }
-  } catch(e) { showToast('Upload error'); }
+  try{
+    const res=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:formData});
+    const data=await res.json();
+    if(data.success){
+      const url=data.data.url;
+      if(db) await db.ref('settings/images/'+target).set(url);
+      showToast(`✅ ${target} uploaded`);
+    } else showToast('Upload failed');
+  }catch(e){ showToast('Upload error'); }
+}
+async function setImageUrl(target){
+  const urlInput=document.getElementById(`${target}-url`);
+  const url=urlInput?.value;
+  if(!url){ showToast('Enter URL'); return; }
+  if(db) await db.ref('settings/images/'+target).set(url);
+  showToast(`✅ ${target} updated`);
 }
 
-function showToast(msg) {
-  let t = document.querySelector('.toast');
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2500);
+document.getElementById('brand-color')?.addEventListener('input',e=>{ document.getElementById('brand-color-hex').value=e.target.value; });
+document.getElementById('brand-color-hex')?.addEventListener('input',e=>{ document.getElementById('brand-color').value=e.target.value; });
+
+function showToast(msg){
+  let t=document.querySelector('.toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2500);
 }
 </script>
 </body>
